@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: light;
+  --background: #f6efe4;
+  --foreground: #2f2a22;
+  --ink: #2f2a22;
+  --forest: #21483f;
+  --sage: #708b75;
+  --clay: #b56f4d;
+  --sand: #e8dcc9;
+  --paper: #fffaf1;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(circle at top right, rgba(181, 111, 77, 0.16), transparent 32rem),
+    radial-gradient(circle at 10% 20%, rgba(112, 139, 117, 0.2), transparent 28rem),
+    linear-gradient(135deg, rgba(255, 250, 241, 0.72), rgba(232, 220, 201, 0.72)),
+    var(--background);
+  color: var(--foreground);
+  font-family: "Noto Sans Hebrew", Arial, Helvetica, sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+:focus-visible {
+  outline: 3px solid #2f7468;
+  outline-offset: 3px;
+}
+
+.prose-content p {
+  margin-top: 1rem;
+  line-height: 1.75;
+}
+
+.font-display {
+  font-family: "Frank Ruhl Libre", "Noto Serif Hebrew", Georgia, "Times New Roman", serif;
+}
+
+.paper-panel {
+  background:
+    linear-gradient(135deg, rgba(255, 250, 241, 0.96), rgba(250, 241, 226, 0.94)),
+    radial-gradient(circle at 20% 20%, rgba(181, 111, 77, 0.12), transparent 18rem);
+  border: 1px solid rgba(111, 86, 56, 0.14);
+  box-shadow: 0 24px 80px rgba(66, 49, 30, 0.08);
+}
+
+.soft-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(111, 86, 56, 0.26), transparent);
+}
+
+.decorative-mark {
+  color: var(--clay);
+  font-family: Georgia, serif;
+  font-size: clamp(2.5rem, 8vw, 6rem);
+  line-height: 0.8;
+  opacity: 0.8;
+}
