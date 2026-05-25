@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { ArrowLeft, BookOpen, Heart, Leaf, Lock, Menu, MessageCircle, ShieldCheck } from "lucide-react";
+import { ArrowLeft, BookOpen, Heart, Leaf, Lock, MessageCircle, ShieldCheck } from "lucide-react";
+import { MobileMenu } from "@/components/mobile-menu";
 import { cn, formatDate } from "@/lib/utils";
 import { siteConfig } from "@/lib/content";
 import type { BulletinPost, Profile, Resource } from "@/types/database";
@@ -82,41 +83,7 @@ export function Navbar({ profile }: { profile?: Profile | null }) {
             </>
           )}
         </div>
-        <details className="group relative md:hidden">
-          <summary className="flex cursor-pointer list-none items-center gap-2 rounded-full border border-[#8b6f4a]/20 bg-[#fffaf1] px-4 py-2 text-sm font-semibold text-[#21483f] shadow-sm [&::-webkit-details-marker]:hidden">
-            <Menu className="h-5 w-5" aria-hidden />
-            תפריט
-          </summary>
-          <div className="absolute left-0 top-12 z-50 w-72 rounded-[1.5rem] border border-[#8b6f4a]/15 bg-[#fffaf1] p-3 text-sm font-medium text-[#554936] shadow-2xl shadow-[#2f2a22]/10">
-            <div className="grid gap-1">
-              {publicLinks.map(([label, href]) => (
-                <Link key={href} href={href} className="rounded-2xl px-4 py-3 hover:bg-[#efe2cf] hover:text-[#21483f]">
-                  {label}
-                </Link>
-              ))}
-            </div>
-            <div className="soft-divider my-3" />
-            <div className="grid gap-2">
-              {profile ? (
-                <Link
-                  href={profile.role === "admin" ? "/admin" : "/member"}
-                  className="rounded-2xl bg-[#21483f] px-4 py-3 text-center font-semibold text-[#fffaf1]"
-                >
-                  אזור אישי
-                </Link>
-              ) : (
-                <>
-                  <Link href="/login" className="rounded-2xl px-4 py-3 text-center font-semibold text-[#21483f] hover:bg-[#efe2cf]">
-                    כניסה
-                  </Link>
-                  <Link href="/request-access" className="rounded-2xl bg-[#21483f] px-4 py-3 text-center font-semibold text-[#fffaf1]">
-                    בקשת גישה
-                  </Link>
-                </>
-              )}
-            </div>
-          </div>
-        </details>
+        <MobileMenu links={publicLinks} dashboardHref={profile ? (profile.role === "admin" ? "/admin" : "/member") : undefined} />
       </nav>
     </header>
   );
