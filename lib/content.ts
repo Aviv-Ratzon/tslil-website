@@ -1,5 +1,5 @@
 export const siteConfig = {
-  name: "צליל - הדרכת הורים",
+  name: "הטיפוחייה",
   description:
     "הדרכת הורים רגועה ומעשית, משאבים מקצועיים וקהילה פרטית למשפחות מאושרות.",
   email: "hello@example.com",
