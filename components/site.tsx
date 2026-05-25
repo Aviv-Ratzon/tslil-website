@@ -4,8 +4,13 @@ import { ArrowLeft, BookOpen, Heart, Leaf, Lock, MessageCircle, ShieldCheck } fr
 import { MobileMenu } from "@/components/mobile-menu";
 import { cn, formatDate } from "@/lib/utils";
 import { siteConfig } from "@/lib/content";
-import logoImage from "@/logo.png";
+import advisor1Image from "@/assets/advisor1.jpeg";
+import logoImage from "@/assets/logo.png";
 import type { BulletinPost, Profile, Resource } from "@/types/database";
+
+const providerImages = {
+  advisor1: advisor1Image,
+};
 
 export function ButtonLink({
   href,
@@ -210,11 +215,24 @@ export function ServiceCard({ service }: { service: { title: string; description
   );
 }
 
-export function ProfileCard({ provider }: { provider: { name: string; title: string; expertise: string[]; bio: string } }) {
+export function ProfileCard({
+  provider,
+}: {
+  provider: { name: string; title: string; expertise: string[]; bio: string; image?: keyof typeof providerImages };
+}) {
+  const image = provider.image ? providerImages[provider.image] : null;
+
   return (
     <Card>
-      <div className="flex h-48 items-center justify-center rounded-[2rem] bg-gradient-to-br from-[#efe2cf] to-[#d8c8ad] text-sm font-semibold text-[#6f5a3b]">
-        תמונה אישית
+      <div
+        className="relative flex items-center justify-center overflow-hidden rounded-[2rem] bg-gradient-to-br from-[#efe2cf] to-[#d8c8ad] text-sm font-semibold text-[#6f5a3b]"
+        style={{ height: "16rem" }}
+      >
+        {image ? (
+          <Image src={image} alt={provider.name} fill sizes="(min-width: 768px) 50vw, 100vw" className="object-contain" />
+        ) : (
+          "תמונה אישית"
+        )}
       </div>
       <h3 className="mt-6 font-display text-3xl font-semibold text-[#21483f]">{provider.name}</h3>
       <p className="text-sm font-medium text-[#b56f4d]">{provider.title}</p>

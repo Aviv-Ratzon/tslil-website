@@ -1,10 +1,19 @@
 import { HeroSection, ResourceCard, SectionHeader, ServiceCard, ProfileCard, ButtonLink } from "@/components/site";
+import { HomeImageRotator } from "@/components/home-image-rotator";
 import { providers, publicResources, services } from "@/lib/content";
 
 export default function HomePage() {
   return (
     <>
       <HeroSection />
+      <section className="mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[0.95fr_1.05fr] lg:px-8">
+        <div className="flex flex-col justify-center">
+          <SectionHeader eyebrow="המרחב שלנו" title="תמונות קטנות מתוך שפה של קשר">
+            רגעים יומיומיים של משחק, קרבה, סקרנות והקשבה מזכירים לנו שהדרכת הורים מתחילה במפגש חי ופשוט.
+          </SectionHeader>
+        </div>
+        <HomeImageRotator />
+      </section>
       <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
         <SectionHeader eyebrow="למי אנחנו עוזרות" title="הדרכה להורים שמתמודדים עם החיים עצמם">
           אנחנו מלוות הורים סביב שאלות של תקשורת, שגרות, מעברים בבית הספר, רגעים רגשיים והצורך בקהילה יציבה.
