@@ -40,13 +40,12 @@ export function SubmitButton({ children }: { children: React.ReactNode }) {
 }
 
 export function Navbar({ profile }: { profile?: Profile | null }) {
-  const canAccessMemberBoard =
-    profile?.approval_status === "approved" && (profile.role === "member" || profile.role === "admin");
   const publicLinks = [
     ["בית", "/"],
     ["אודות", "/about"],
     ["שירותים", "/services"],
     ["משאבים", "/resources"],
+    ["לוח מודעות", "/bulletin-board"],
     ["יצירת קשר", "/contact"],
   ];
 
@@ -68,11 +67,6 @@ export function Navbar({ profile }: { profile?: Profile | null }) {
               {label}
             </Link>
           ))}
-          {canAccessMemberBoard ? (
-            <Link href="/member/bulletin-board" className="font-semibold text-[#21483f] hover:text-[#b56f4d]">
-              לוח מודעות
-            </Link>
-          ) : null}
         </div>
         <div className="flex items-center gap-2">
           {profile ? (
