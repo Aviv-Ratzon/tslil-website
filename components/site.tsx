@@ -1,8 +1,10 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowLeft, BookOpen, Heart, Leaf, Lock, MessageCircle, ShieldCheck } from "lucide-react";
 import { MobileMenu } from "@/components/mobile-menu";
 import { cn, formatDate } from "@/lib/utils";
 import { siteConfig } from "@/lib/content";
+import logoImage from "@/logo.png";
 import type { BulletinPost, Profile, Resource } from "@/types/database";
 
 export function ButtonLink({
@@ -53,9 +55,9 @@ export function Navbar({ profile }: { profile?: Profile | null }) {
   return (
     <header className="sticky top-0 z-40 border-b border-[#8b6f4a]/15 bg-[#f6efe4]/88 backdrop-blur-xl">
       <nav className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8">
-        <Link href="/" className="group flex items-center gap-3 text-[#21483f]">
-          <span className="flex h-11 w-11 items-center justify-center rounded-full border border-[#8b6f4a]/20 bg-[#fffaf1] font-display text-xl shadow-sm">
-            צ
+        <Link href="/" className="group flex items-center gap-2 text-[#21483f]">
+          <span className="flex h-12 w-12 items-center justify-center overflow-hidden rounded-full border border-[#8b6f4a]/20 bg-[#fffaf1] shadow-sm sm:h-13 sm:w-13">
+            <Image src={logoImage} alt={siteConfig.name} className="h-10 w-10 object-contain sm:h-11 sm:w-11" priority />
           </span>
           <span>
             <span className="block font-display text-xl font-bold leading-none tracking-tight">{siteConfig.name}</span>
