@@ -1,5 +1,6 @@
 import { HeroSection, SectionHeader, ServiceCard, ProfileCard, ButtonLink } from "@/components/site";
 import { HomeImageRotator } from "@/components/home-image-rotator";
+import { HomeVideoEmbed } from "@/components/home-video-embed";
 import { ContactForm } from "@/components/contact-form";
 import { FaqAccordion } from "@/components/faq-accordion";
 import { TextBlock } from "@/components/text-block";
@@ -24,6 +25,8 @@ export default async function HomePage({ searchParams }: { searchParams: Promise
           </div>
         </div>
       </section>
+
+      <HomeVideoEmbed embedUrl={homepageSections.video.embedUrl} title={homepageSections.video.title} />
 
       <TextBlock title={homepageSections.block1.title} text={homepageSections.block1.text} />
       <TextBlock title={homepageSections.block2.title} text={homepageSections.block2.text} />

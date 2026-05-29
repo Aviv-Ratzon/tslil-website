@@ -34,6 +34,11 @@ export const homepageSections = {
     eyebrow: "שאלות ותשובות",
     title: "שאלות נפוצות",
   },
+  video: {
+    embedUrl:
+      "https://1drv.ms/v/c/7497e6b56d12fab6/IQTQSl5grA4aRoyGNquEnaddAUfW8o1UEy--IktsV-rMRI4?width=1920&height=1080",
+    title: "סרטון מהטיפוחייה",
+  },
 };
 
 export const faqItems = [
