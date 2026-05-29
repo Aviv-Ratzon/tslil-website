@@ -26,8 +26,6 @@ export default async function HomePage({ searchParams }: { searchParams: Promise
         </div>
       </section>
 
-      <HomeVideoEmbed embedUrl={homepageSections.video.embedUrl} title={homepageSections.video.title} />
-
       <TextBlock title={homepageSections.block1.title} text={homepageSections.block1.text} />
       <TextBlock title={homepageSections.block2.title} text={homepageSections.block2.text} />
 
@@ -82,6 +80,8 @@ export default async function HomePage({ searchParams }: { searchParams: Promise
       </section>
 
       <TextBlock title={homepageSections.block3.title} text={homepageSections.block3.text} />
+
+      <HomeVideoEmbed embedUrl={homepageSections.video.embedUrl} title={homepageSections.video.title} />
 
       <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
         <SectionHeader eyebrow="שירותים" title="שבילים שונים לליווי והעמקה" />
