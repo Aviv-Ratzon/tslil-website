@@ -1,6 +1,6 @@
 export const siteConfig = {
   name: "הטיפוחייה",
-  description: "הדרכת הורים רגועה ומעשית, בגישה אישית ומכבדת.",
+  description: "להורים שמחפשים מסגרת אלטרנטיבית קהילתית לגיל הרך.",
   email1: "tslil.xd@gmail.com",
   email2: "michaliben3@gmail.com",
 };
