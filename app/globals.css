@@ -11,8 +11,8 @@
   --color-brand-light: #e5c4a0;
   --color-brand-soft: #f3e2cf;
 
-  /* Cream #FDF8E5 */
-  --color-cream: #83921c;
+  /* Cream #CFDB63 */
+  --color-cream: #CFDB63;
   --color-cream-dark: #f5edd4;
   --color-cream-darker: #ebe3cc;
   --color-paper: #fdf8e5;
@@ -93,10 +93,7 @@ a {
 }
 
 .paper-panel {
-  background:
-    linear-gradient(135deg, rgba(253, 248, 229, 0.98), rgba(245, 237, 212, 0.95)),
-    radial-gradient(circle at 20% 20%, rgba(131, 146, 28, 0.06), transparent 18rem),
-    radial-gradient(circle at 80% 80%, rgba(197, 139, 76, 0.08), transparent 16rem);
+  background-color: #fdf8e5;
   border: 3px solid #ffffff;
   box-shadow:
     0 0 0 2px var(--leaf),
@@ -104,6 +101,7 @@ a {
 }
 
 .framed-box {
+  background-color: #fdf8e5;
   border: 1px solid #ffffff;
   box-shadow: 0 0 0 1px var(--leaf);
 }
@@ -123,6 +121,6 @@ a {
 
 .logo-wordmark {
   color: var(--brand);
-  -webkit-text-stroke: 1.5px #ffffff;
-  paint-order: stroke fill;
+  /* -webkit-text-stroke: 1.5px #ffffff;
+  paint-order: stroke fill; */
 }

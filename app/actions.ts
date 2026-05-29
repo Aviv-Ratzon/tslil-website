@@ -11,9 +11,16 @@ function contactReturnPath(formData: FormData) {
 
 export async function contactAction(formData: FormData) {
   const returnPath = contactReturnPath(formData);
-  const parsed = contactSchema.safeParse(Object.fromEntries(formData.entries()));
+  const raw = Object.fromEntries(formData.entries());
+  const parsed = contactSchema.safeParse(raw);
 
   if (!parsed.success) {
+    if (process.env.NODE_ENV === "development") {
+      console.error("[contactAction] validation failed");
+      console.error("  submitted fields:", raw);
+      console.error("  field errors:", parsed.error.flatten().fieldErrors);
+      console.error("  form errors:", parsed.error.flatten().formErrors);
+    }
     redirect(`${returnPath}?error=validation`);
   }
 
