@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+@theme {
+  --font-sans: var(--font-rubik), Arial, Helvetica, sans-serif;
+  --font-display: var(--font-yarden), Arial, Helvetica, sans-serif;
+}
+
 :root {
   color-scheme: light;
   --background: #f6efe4;
@@ -28,7 +33,7 @@ body {
     linear-gradient(135deg, rgba(255, 250, 241, 0.72), rgba(232, 220, 201, 0.72)),
     var(--background);
   color: var(--foreground);
-  font-family: "Noto Sans Hebrew", Arial, Helvetica, sans-serif;
+  font-family: var(--font-rubik), Arial, Helvetica, sans-serif;
 }
 
 a {
@@ -46,7 +51,7 @@ a {
 }
 
 .font-display {
-  font-family: "Frank Ruhl Libre", "Noto Serif Hebrew", Georgia, "Times New Roman", serif;
+  font-family: var(--font-yarden), Arial, Helvetica, sans-serif;
 }
 
 .paper-panel {
@@ -64,7 +69,7 @@ a {
 
 .decorative-mark {
   color: var(--clay);
-  font-family: Georgia, serif;
+  font-family: var(--font-yarden), Arial, Helvetica, sans-serif;
   font-size: clamp(2.5rem, 8vw, 6rem);
   line-height: 0.8;
   opacity: 0.8;

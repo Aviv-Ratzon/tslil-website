@@ -1,43 +1,25 @@
-# Tslil Parent Guidance
+# הטיפוחייה — אתר שיווקי
 
-A production-oriented Next.js App Router application for a parent-guidance service with:
+אתר Next.js (App Router) בעברית ו-RTL עם דפים ציבוריים בלבד:
 
-- Public marketing pages
-- Supabase Auth sign-up/login/password reset
-- Admin approval workflow
-- Private member dashboard
-- Secure resource library with Supabase Storage signed URLs
-- Private bulletin board and connection requests
-- Admin CMS-style pages for users, resources, posts, reports, contact submissions, and announcements
-- PostgreSQL schema, RLS policies, storage buckets, and seed data
+- בית (`/`)
+- אודות (`/about`)
+- שירותים (`/services`)
+- יצירת קשר (`/contact`)
 
-## Setup
-
-1. Copy `.env.example` to `.env.local`.
-2. Add Supabase project values:
-   - `NEXT_PUBLIC_SUPABASE_URL`
-   - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
-   - `SUPABASE_SERVICE_ROLE_KEY` if you later add service-role-only server jobs.
-3. Apply `supabase/migrations/0001_initial_schema.sql` to your Supabase database.
-4. Run `supabase/seed.sql` for development seed content.
-5. Start the app:
+## התקנה והרצה
 
 ```bash
+npm install
 npm run dev
 ```
 
-## Admin Bootstrap
+אופציונלי: הגדירו `NEXT_PUBLIC_SITE_URL` ב-`.env.local` לכתובת האתר (למפת אתר).
 
-After creating the first user through Request Access, promote that user in Supabase SQL:
+## טופס יצירת קשר
 
-```sql
-update public.profiles
-set role = 'admin', approval_status = 'approved'
-where email = 'admin@example.com';
-```
+הטופס מאומת בשרת ומציג הודעת אישור. ניתן לחבר שליחת אימייל או CRM ב-`app/actions.ts`.
 
-After that, use `/admin/users` to manage approvals and roles.
+## תיקיית Supabase (לא בשימוש)
 
-## Security Notes
-
-Private member and admin routes perform server-side authorization checks. Database access is also protected with RLS policies, including pending/suspended user restrictions, admin-only role changes, private resource visibility, private bulletin posts, report handling, and storage policies for private resource files.
+תיקיית `supabase/` נשמרה לעתיד, אם תרצו להחזיר מערכת משתמשים, לוח מודעות וספריית משאבים.

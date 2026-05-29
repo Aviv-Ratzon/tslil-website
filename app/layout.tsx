@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Footer, Navbar } from "@/components/site";
-import { getCurrentProfile } from "@/lib/auth";
+import { Navbar } from "@/components/navbar";
+import { Footer } from "@/components/site";
 import { siteConfig } from "@/lib/content";
+import { rubik, yarden } from "@/lib/fonts";
 
 export const metadata: Metadata = {
   title: {
@@ -17,13 +18,11 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  const { profile } = await getCurrentProfile();
-
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="he" dir="rtl">
-      <body>
-        <Navbar profile={profile} />
+    <html lang="he" dir="rtl" className={`${yarden.variable} ${rubik.variable}`}>
+      <body className={rubik.className}>
+        <Navbar />
         <main>{children}</main>
         <Footer />
       </body>

@@ -14,6 +14,7 @@ const images = [
 
 export function HomeImageRotator() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const active = images[activeIndex];
 
   useEffect(() => {
     const interval = window.setInterval(() => {
@@ -29,23 +30,15 @@ export function HomeImageRotator() {
         className="relative overflow-hidden rounded-[2.5rem] bg-[#efe2cf]"
         style={{ height: "28rem" }}
       >
-        {images.map((image, index) => (
-          <div
-            key={image.alt}
-            className="absolute inset-0 flex items-center justify-center transition-opacity duration-1000"
-            style={{
-              opacity: index === activeIndex ? 1 : 0,
-              zIndex: index === activeIndex ? 1 : 0,
-            }}
-          >
-            <Image
-              src={image.src}
-              alt={image.alt}
-              className="h-auto max-h-full w-auto max-w-full object-contain"
-              priority={index === 0}
-            />
-          </div>
-        ))}
+        <div className="absolute inset-0 flex items-center justify-center">
+          <Image
+            key={active.alt}
+            src={active.src}
+            alt={active.alt}
+            className="h-auto max-h-full w-auto max-w-full object-contain"
+            priority={activeIndex === 0}
+          />
+        </div>
         <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#21483f]/70 to-transparent p-6 text-[#fffaf1]">
           <p className="font-display text-2xl font-semibold">רגעים של משחק, הקשבה וקשר</p>
           <p className="mt-2 text-sm text-[#f6efe4]">מרחב הורי שמתחיל מהחיים עצמם.</p>

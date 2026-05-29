@@ -1,15 +1,14 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowLeft, BookOpen, Heart, Leaf, Lock, MessageCircle, ShieldCheck } from "lucide-react";
-import { MobileMenu } from "@/components/mobile-menu";
-import { cn, formatDate } from "@/lib/utils";
+import { ArrowLeft, BookOpen, Heart, Leaf, ShieldCheck } from "lucide-react";
+import { cn } from "@/lib/utils";
 import { siteConfig } from "@/lib/content";
 import advisor1Image from "@/assets/advisor1.jpeg";
-import logoImage from "@/assets/logo.png";
-import type { BulletinPost, Profile, Resource } from "@/types/database";
+import advisor2Image from "@/assets/advisor2.jpeg";
 
 const providerImages = {
   advisor1: advisor1Image,
+  advisor2: advisor2Image,
 };
 
 export function ButtonLink({
@@ -47,55 +46,6 @@ export function SubmitButton({ children }: { children: React.ReactNode }) {
   );
 }
 
-export function Navbar({ profile }: { profile?: Profile | null }) {
-  const publicLinks = [
-    ["בית", "/"],
-    ["אודות", "/about"],
-    ["שירותים", "/services"],
-    ["משאבים", "/resources"],
-    ["לוח מודעות", "/bulletin-board"],
-    ["יצירת קשר", "/contact"],
-  ];
-
-  return (
-    <header className="sticky top-0 z-40 border-b border-[#8b6f4a]/15 bg-[#f6efe4]/88 backdrop-blur-xl">
-      <nav className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8">
-        <Link href="/" className="group flex items-center gap-2 text-[#21483f]">
-          <span className="flex h-12 w-12 items-center justify-center overflow-hidden rounded-full border border-[#8b6f4a]/20 bg-[#fffaf1] shadow-sm sm:h-13 sm:w-13">
-            <Image src={logoImage} alt={siteConfig.name} className="h-10 w-10 object-contain sm:h-11 sm:w-11" priority />
-          </span>
-          <span>
-            <span className="block font-display text-xl font-bold leading-none tracking-tight">{siteConfig.name}</span>
-            <span className="mt-1 block text-xs text-[#6f5a3b]">מרחב להורים, הקשבה וקהילה</span>
-          </span>
-        </Link>
-        <div className="hidden items-center gap-6 rounded-full border border-[#8b6f4a]/15 bg-[#fffaf1]/70 px-5 py-2 text-sm font-medium text-[#554936] shadow-sm md:flex">
-          {publicLinks.map(([label, href]) => (
-            <Link key={href} href={href} className="hover:text-[#21483f]">
-              {label}
-            </Link>
-          ))}
-        </div>
-        <div className="hidden items-center gap-2 md:flex">
-          {profile ? (
-            <ButtonLink href={profile.role === "admin" ? "/admin" : "/member"} variant="secondary">
-              אזור אישי
-            </ButtonLink>
-          ) : (
-            <>
-              <ButtonLink href="/login" variant="ghost">
-                כניסה
-              </ButtonLink>
-              <ButtonLink href="/request-access">בקשת גישה</ButtonLink>
-            </>
-          )}
-        </div>
-        <MobileMenu links={publicLinks} dashboardHref={profile ? (profile.role === "admin" ? "/admin" : "/member") : undefined} />
-      </nav>
-    </header>
-  );
-}
-
 export function Footer() {
   return (
     <footer className="border-t border-[#8b6f4a]/15 bg-[#21483f] text-[#f6efe4]">
@@ -105,12 +55,17 @@ export function Footer() {
           <p className="mt-3 leading-7 text-[#e5d8c5]">{siteConfig.description}</p>
         </div>
         <div>
-          <p className="font-semibold text-white">פרטיות לפני הכל</p>
-          <p className="mt-3 leading-7 text-[#e5d8c5]">מידע של חברות וחברים, פוסטים בלוח המודעות ומשאבים פרטיים מוגנים באמצעות בדיקות הרשאה ומדיניות אבטחה בבסיס הנתונים.</p>
+          <p className="font-semibold text-white">הגישה שלנו</p>
+          <p className="mt-3 leading-7 text-[#e5d8c5]">
+            הדרכה מקצועית, חמה ומעשית — עם כבוד לקצב של כל משפחה ולפרטיות שלכם.
+          </p>
         </div>
         <div>
           <p className="font-semibold text-white">יצירת קשר</p>
           <p className="mt-3 text-[#e5d8c5]">{siteConfig.email}</p>
+          <Link href="/contact" className="mt-4 inline-block font-semibold text-[#d9c8ad] hover:text-white">
+            טופס יצירת קשר
+          </Link>
         </div>
       </div>
     </footer>
@@ -124,7 +79,7 @@ export function HeroSection() {
       <div className="mx-auto grid max-w-7xl gap-12 px-4 py-16 sm:px-6 lg:grid-cols-[1fr_0.95fr] lg:px-8 lg:py-24">
         <div className="paper-panel rounded-[2.5rem] p-8 sm:p-12">
           <span className="inline-flex rounded-full border border-[#8b6f4a]/20 bg-[#fffaf1] px-4 py-2 text-sm font-semibold text-[#6f5a3b]">
-            הדרכת הורים ברוגע, בהירות וקהילה
+            הדרכת הורים ברוגע, בהירות ותמיכה
           </span>
           <h1 className="mt-8 max-w-3xl font-display text-5xl font-bold leading-[1.05] tracking-tight text-[#21483f] sm:text-7xl">
             להקשיב לילדים.
@@ -132,14 +87,11 @@ export function HeroSection() {
             להחזיר אוויר להורות.
           </h1>
           <p className="mt-7 max-w-2xl text-xl leading-9 text-[#554936]">
-            שירות הדרכה מקצועי בהובלת שתי נשים, המשלב פגישות אישיות, משאבים מועילים ומרחב פרטי ומאובטח להורים מאושרים.
+            שירות הדרכה מקצועי בהובלת שתי נשים — פגישות אישיות, סדנאות וליווי מעשי להורים.
           </p>
           <div className="mt-9 flex flex-wrap gap-3">
             <ButtonLink href="/contact">דברו איתנו</ButtonLink>
-            <ButtonLink href="/request-access" variant="secondary">
-              בקשת גישה
-            </ButtonLink>
-            <ButtonLink href="/services" variant="ghost">
+            <ButtonLink href="/services" variant="secondary">
               צפייה בשירותים
             </ButtonLink>
           </div>
@@ -158,10 +110,9 @@ export function HeroSection() {
             <div className="soft-divider my-8" />
             <div className="grid gap-4">
               {[
-                ["מרחב פרטי ומאושר", ShieldCheck],
-                ["משאבים עדינים ומעשיים", BookOpen],
-                ["בקשות קשר ששומרות על פרטיות", Lock],
-                ["קהילה שרואה את ההורה", Heart],
+                ["ליווי מקצועי ואישי", ShieldCheck],
+                ["כלים מעשיים לשגרה", BookOpen],
+                ["הקשבה ללא שיפוטיות", Heart],
               ].map(([label, Icon]) => (
                 <div key={label as string} className="flex items-center gap-4 rounded-2xl bg-[#f1e5d2]/70 p-4">
                   <Icon className="h-5 w-5 text-[#b56f4d]" aria-hidden />
@@ -248,96 +199,6 @@ export function ProfileCard({
   );
 }
 
-export function ResourceCard({ resource }: { resource: Partial<Resource> & { title: string; type?: string | null; description?: string | null } }) {
-  return (
-    <Card className="flex h-full flex-col">
-      <div className="flex items-center justify-between gap-3">
-        <StatusBadge label={resource.type ?? "resource"} />
-        {resource.visibility ? <StatusBadge label={resource.visibility} tone={resource.visibility === "public" ? "green" : "amber"} /> : null}
-      </div>
-      <h3 className="mt-5 font-display text-2xl font-semibold text-[#21483f]">{resource.title}</h3>
-      <p className="mt-3 flex-1 leading-7 text-[#554936]">{resource.description}</p>
-      {resource.created_at ? <p className="mt-5 text-xs text-[#8b6f4a]">נוסף בתאריך {formatDate(resource.created_at)}</p> : null}
-    </Card>
-  );
-}
-
-export function BulletinPostCard({ post, href }: { post: BulletinPost; href?: string }) {
-  const content = (
-    <Card className="h-full">
-      <div className="flex flex-wrap items-center gap-2">
-        <StatusBadge label={post.category} />
-        <StatusBadge label={post.status} tone={post.status === "published" ? "green" : "amber"} />
-      </div>
-      <h3 className="mt-4 font-display text-2xl font-semibold text-[#21483f]">{post.title}</h3>
-      <p className="mt-3 line-clamp-3 leading-7 text-[#554936]">{post.body}</p>
-      <p className="mt-5 text-xs text-[#8b6f4a]">
-        {post.city_region ? `${post.city_region} · ` : ""}
-        {formatDate(post.created_at)}
-      </p>
-    </Card>
-  );
-
-  return href ? <Link href={href}>{content}</Link> : content;
-}
-
-export function StatusBadge({ label, tone = "neutral" }: { label: string; tone?: "neutral" | "green" | "amber" | "red" }) {
-  const translatedLabels: Record<string, string> = {
-    resource: "משאב",
-    article: "מאמר",
-    pdf: "PDF",
-    image: "תמונה",
-    video: "סרטון",
-    external_link: "קישור חיצוני",
-    worksheet: "דף עבודה",
-    guide: "מדריך",
-    public: "ציבורי",
-    members: "חברים",
-    admins: "מנהלים",
-    pending: "בהמתנה",
-    approved: "מאושר",
-    rejected: "נדחה",
-    suspended: "מושעה",
-    member: "חבר",
-    admin: "מנהל",
-    published: "פורסם",
-    hidden: "מוסתר",
-    deleted: "נמחק",
-    draft: "טיוטה",
-    cancelled: "בוטל",
-    open: "פתוח",
-    reviewing: "בבדיקה",
-    resolved: "טופל",
-    dismissed: "נסגר",
-    new: "חדש",
-    read: "נקרא",
-    archived: "בארכיון",
-  };
-
-  return (
-    <span
-      className={cn(
-        "inline-flex rounded-full px-3 py-1 text-xs font-semibold",
-        tone === "neutral" && "bg-[#efe2cf] text-[#6f5a3b]",
-        tone === "green" && "bg-[#e4eadf] text-[#21483f]",
-        tone === "amber" && "bg-[#f4dfc7] text-[#8a4c2e]",
-        tone === "red" && "bg-[#f5ded8] text-[#8a2f25]",
-      )}
-    >
-      {translatedLabels[label] ?? label.replaceAll("_", " ")}
-    </span>
-  );
-}
-
-export function EmptyState({ title, children }: { title: string; children?: React.ReactNode }) {
-  return (
-    <div className="rounded-[2rem] border border-dashed border-[#8b6f4a]/30 bg-[#fffaf1]/70 p-10 text-center">
-      <h3 className="font-display text-2xl font-semibold text-[#21483f]">{title}</h3>
-      {children ? <p className="mt-3 text-[#554936]">{children}</p> : null}
-    </div>
-  );
-}
-
 export function Field({ label, name, type = "text", required, children }: { label: string; name: string; type?: string; required?: boolean; children?: React.ReactNode }) {
   return (
     <label className="block text-sm font-medium text-[#3f3528]">
@@ -365,17 +226,5 @@ export function TextArea({ label, name, required, rows = 5 }: { label: string; n
         className="mt-2 w-full rounded-2xl border border-[#8b6f4a]/25 bg-[#fffaf1] px-4 py-3 text-[#2f2a22] shadow-sm"
       />
     </label>
-  );
-}
-
-export function PrivateReminder() {
-  return (
-    <div className="rounded-[2rem] border border-[#b56f4d]/25 bg-[#f4dfc7]/70 p-5 text-sm leading-7 text-[#6b3d28]">
-      <div className="mb-2 flex items-center gap-2 font-semibold">
-        <MessageCircle className="h-4 w-4" aria-hidden />
-        תזכורת עדינה לפרטיות
-      </div>
-      אנא הימנעו משיתוף מידע אישי רגיש, כתובות מדויקות, שמות ילדים, פרטים רפואיים או פרטי קשר פרטיים בפוסטים ציבוריים בקהילה.
-    </div>
   );
 }
