@@ -19,19 +19,21 @@ export function ContactForm({
         <Field label="שם מלא" name="full_name" required />
         <Field label="אימייל" name="email" type="email" required />
         <Field label="מספר טלפון, לא חובה" name="phone" />
+        <Field label="אזור מגורים" name="residence_area" required />
         <Field label="סיבת הפנייה" name="reason">
           <select name="reason" className="mt-2 w-full rounded-2xl border border-brand/25 bg-paper px-4 py-3 text-ink">
             <option value="">בחרו סיבה</option>
-            <option>ייעוץ</option>
-            <option>סדנה</option>
-            <option>ליווי מתמשך</option>
+            <option>קבוצה המבקשת ליווי</option>
+            <option>ייעוץ חד פעמי</option>
+            <option>שיתוף פעולה</option>
+            <option>הצטרפות לקהילה</option>
             <option>אחר</option>
           </select>
         </Field>
         <TextArea label="הודעה" name="message" required />
         <label className="flex gap-3 text-sm text-muted">
           <input name="consent" type="checkbox" required className="mt-1 h-4 w-4" />
-          אני מסכים/ה שיצרו איתי קשר בנוגע להודעה שלי.
+          אני מסכים/ה שפרטיי ישמרו לטיפול בפנייתי.
         </label>
         <SubmitButton>שליחת הודעה</SubmitButton>
       </form>

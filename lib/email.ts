@@ -35,6 +35,7 @@ export async function sendContactEmail(data: ContactPayload) {
       `שם: ${data.full_name}`,
       `אימייל: ${data.email}`,
       `טלפון: ${phone}`,
+      `אזור מגורים: ${data.residence_area}`,
       `סיבת הפנייה: ${reason}`,
       "",
       "הודעה:",

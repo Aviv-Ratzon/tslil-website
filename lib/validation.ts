@@ -8,6 +8,7 @@ export const contactSchema = z.object({
   full_name: requiredText("שם מלא"),
   email,
   phone: optionalText,
+  residence_area: requiredText("אזור מגורים"),
   reason: optionalText,
   message: requiredText("הודעה", 10),
   consent: z.literal("on", "נדרשת הסכמה."),
