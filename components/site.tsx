@@ -110,7 +110,7 @@ export function HeroSection() {
               {[
                 ["מקום לפגוש ולהיפגש", ShieldCheck],
                 ["מרחב קהילתי שבו תודעות נוגעות זו בזו", BookOpen],
-                ["איפה שאוכלים מאפינס סלק", Heart],
+                ["איפה שאוכלים פאנקייקס סלק", Heart],
               ].map(([label, Icon]) => (
                 <div key={label as string} className="framed-box flex items-center gap-4 rounded-2xl bg-paper/90 p-4">
                   <Icon className="h-5 w-5 text-leaf" aria-hidden />
