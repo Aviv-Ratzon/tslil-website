@@ -79,16 +79,17 @@ export function HeroSection() {
       <div className="mx-auto grid max-w-7xl gap-12 px-4 py-16 sm:px-6 lg:grid-cols-[1fr_0.95fr] lg:px-8 lg:py-24">
         <div className="paper-panel rounded-[2.5rem] p-8 sm:p-12">
           <span className="inline-flex rounded-full border border-brand/20 bg-paper px-4 py-2 text-sm font-semibold text-muted-light">
-            הדרכת הורים ברוגע, בהירות ותמיכה
+            למה אנחנו פה ?
           </span>
-          <h1 className="mt-8 max-w-3xl font-display text-5xl font-bold leading-[1.05] tracking-tight text-brand sm:text-7xl">
-            להקשיב לילדים.
-            <br />
-            להחזיר אוויר להורות.
-          </h1>
-          <p className="mt-7 max-w-2xl text-xl leading-9 text-muted">
-            שירות הדרכה מקצועי בהובלת שתי נשים — פגישות אישיות, סדנאות וליווי מעשי להורים.
-          </p>
+          <div className="space-y-5 font-display text-3xl font-semibold leading-tight text-brand sm:text-4xl">
+           אנחנו אוכלות נקניק טעים כל יום עם חזיר וגבינה וגם אוהבות לאכול ילדים
+           <br />
+           יאם יאם יאם ילדים
+           <br />
+           ילדים זה טעים
+           <br />
+           נה נהנה 
+          </div>
           <div className="mt-9 flex flex-wrap gap-3">
             <ButtonLink href="/contact">דברו איתנו</ButtonLink>
             <ButtonLink href="/services" variant="secondary">
@@ -100,19 +101,16 @@ export function HeroSection() {
           <div className="absolute -right-8 top-8 h-32 w-32 rounded-full bg-brand/15 blur-2xl" />
           <div className="absolute -left-6 bottom-10 h-40 w-40 rounded-full bg-leaf/12 blur-2xl" />
           <div className="paper-panel relative rounded-[3rem] p-8 sm:p-10">
-            <p className="decorative-mark">״</p>
             <div className="space-y-5 font-display text-3xl font-semibold leading-tight text-brand sm:text-4xl">
-              <p>ממאבק כוחות</p>
-              <p className="pr-8 text-leaf">למפגש בין רצונות</p>
-              <p>מבלבול יומיומי</p>
-              <p className="pr-8 text-leaf">לשפה של קרבה</p>
+            <p className="pr-0 text-leaf">מה היא</p>
+            <p className="pr-8 font-normal">הטיפוחייה ?</p>
             </div>
             <div className="soft-divider my-8" />
             <div className="grid gap-4">
               {[
-                ["ליווי מקצועי ואישי", ShieldCheck],
-                ["כלים מעשיים לשגרה", BookOpen],
-                ["הקשבה ללא שיפוטיות", Heart],
+                ["מקום לפגוש ולהיפגש", ShieldCheck],
+                ["מרחב קהילתי שבו תודעות נוגעות זו בזו", BookOpen],
+                ["איפה שאוכלים מאפינס סלק", Heart],
               ].map(([label, Icon]) => (
                 <div key={label as string} className="framed-box flex items-center gap-4 rounded-2xl bg-paper/90 p-4">
                   <Icon className="h-5 w-5 text-leaf" aria-hidden />
