@@ -1,10 +1,16 @@
 export const siteConfig = {
   name: "הטיפוחייה",
   description: "הדרכת הורים רגועה ומעשית, בגישה אישית ומכבדת.",
-  email: "hello@example.com",
+  email1: "tslil.xd@gmail.com",
+  email2: "michaliben3@gmail.com",
 };
 
 export const homepageSections = {
+  heroWhatIs: {
+    titleLine1: "מה היא",
+    titleLine2: "הטיפוחייה ?",
+    body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+  },
   block1: {
     title: "מה אנחנו מציעות",
     text: "טקסט 1 — כאן ניתן להוסיף פסקה שמסבירה את הגישה, הערכים או מה שחשוב לכם שהורים ידעו כבר מהדף הראשי.",
@@ -19,8 +25,9 @@ export const homepageSections = {
   },
   contact: {
     eyebrow: "יצירת קשר",
-    title: "נשמח לשמוע מכם",
-    description: "מלאו את הטופס ונחזור אליכם בהקדם.",
+    titleLine1: "יש לכם קבוצה ומעוניינים בליווי?",
+    titleLine2: "צרו איתנו קשר",
+    description: "מלאו את הטופס ונחזור אליכן בהקדם.",
   },
   faq: {
     eyebrow: "שאלות ותשובות",

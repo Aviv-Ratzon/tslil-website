@@ -11,18 +11,10 @@ export default async function HomePage({ searchParams }: { searchParams: Promise
   return (
     <>
       <HeroSection />
-      <section className="mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[0.95fr_1.05fr] lg:px-8">
-        <div className="flex flex-col justify-center">
-          <SectionHeader eyebrow="המרחב שלנו" title="תמונות קטנות מתוך שפה של קשר">
-            רגעים יומיומיים של משחק, קרבה, סקרנות והקשבה מזכירים לנו שהדרכת הורים מתחילה במפגש חי ופשוט.
-          </SectionHeader>
-        </div>
-        <HomeImageRotator />
-      </section>
 
       <section className="py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <SectionHeader eyebrow="הצוות" title="שתי נשים, משימה משותפת אחת">
+          <SectionHeader eyebrow="הצוות" title="מי אנחנו ?">
             אנחנו משלבות מבנה מקצועי עם גישה חמה ומעשית שמכבדת את הפרטיות והקצב של כל משפחה.
           </SectionHeader>
           <div className="mt-10 grid gap-6 md:grid-cols-2">
@@ -36,8 +28,26 @@ export default async function HomePage({ searchParams }: { searchParams: Promise
       <TextBlock title={homepageSections.block1.title} text={homepageSections.block1.text} />
       <TextBlock title={homepageSections.block2.title} text={homepageSections.block2.text} />
 
+      <section className="mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[0.95fr_1.05fr] lg:px-8">
+        <div className="flex flex-col justify-center">
+          <SectionHeader eyebrow="הטיפוחייה שלנו" title="דוגמאות מהיום יום">
+            קירבה. מגע. נקניקייה.
+          </SectionHeader>
+        </div>
+        <HomeImageRotator />
+      </section>
+
       <section id="contact" className="mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:px-8">
-        <SectionHeader eyebrow={homepageSections.contact.eyebrow} title={homepageSections.contact.title}>
+        <SectionHeader
+          eyebrow={homepageSections.contact.eyebrow}
+          title={
+            <>
+              {homepageSections.contact.titleLine1}
+              <br />
+              {homepageSections.contact.titleLine2}
+            </>
+          }
+        >
           {homepageSections.contact.description}
         </SectionHeader>
         <div className="mt-10">

@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowLeft, BookOpen, Heart, Leaf, ShieldCheck } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { siteConfig } from "@/lib/content";
+import { homepageSections, siteConfig } from "@/lib/content";
 import advisor1Image from "@/assets/advisor1.jpeg";
 import advisor2Image from "@/assets/advisor2.jpeg";
 
@@ -62,7 +62,8 @@ export function Footer() {
         </div>
         <div>
           <p className="font-semibold text-cream">יצירת קשר</p>
-          <p className="mt-3 text-leaf-light">{siteConfig.email}</p>
+          <p className="mt-3 text-leaf-light">{siteConfig.email1}</p>
+          <p className="mt-3 text-leaf-light">{siteConfig.email2}</p>
           <Link href="/contact" className="mt-4 inline-block font-semibold text-leaf-soft hover:text-cream">
             טופס יצירת קשר
           </Link>
@@ -102,9 +103,10 @@ export function HeroSection() {
           <div className="absolute -left-6 bottom-10 h-40 w-40 rounded-full bg-leaf/12 blur-2xl" />
           <div className="paper-panel relative rounded-[3rem] p-8 sm:p-10">
             <div className="space-y-5 font-display text-3xl font-semibold leading-tight text-brand sm:text-4xl">
-            <p className="pr-0 text-leaf">מה היא</p>
-            <p className="pr-8 font-normal">הטיפוחייה ?</p>
+              <p className="pr-0 text-leaf">{homepageSections.heroWhatIs.titleLine1}</p>
+              <p className="pr-8 font-normal">{homepageSections.heroWhatIs.titleLine2}</p>
             </div>
+            <p className="mt-5 text-base font-normal leading-8 text-muted">{homepageSections.heroWhatIs.body}</p>
             <div className="soft-divider my-8" />
             <div className="grid gap-4">
               {[
@@ -125,7 +127,7 @@ export function HeroSection() {
   );
 }
 
-export function SectionHeader({ eyebrow, title, children }: { eyebrow?: string; title: string; children?: React.ReactNode }) {
+export function SectionHeader({ eyebrow, title, children }: { eyebrow?: string; title: React.ReactNode; children?: React.ReactNode }) {
   return (
     <div className="mx-auto max-w-3xl text-center">
       {eyebrow ? <p className="text-sm font-semibold tracking-[0.18em] text-leaf">{eyebrow}</p> : null}

@@ -1,3 +1,4 @@
+import { homepageSections } from "@/lib/content";
 import type { Metadata } from "next";
 import { SectionHeader } from "@/components/site";
 import { ContactForm } from "@/components/contact-form";
@@ -12,7 +13,18 @@ export default async function ContactPage({ searchParams }: { searchParams: Prom
 
   return (
     <section className="mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:px-8">
-      <SectionHeader eyebrow="יצירת קשר" title="ספרו לנו איזה סוג תמיכה אתם מחפשים" />
+      <SectionHeader
+        eyebrow={homepageSections.contact.eyebrow}
+        title={
+          <>
+            {homepageSections.contact.titleLine1}
+            <br />
+            {homepageSections.contact.titleLine2}
+          </>
+        }
+      >
+        {homepageSections.contact.description}
+      </SectionHeader>
       <div className="mt-10">
         <ContactForm sent={Boolean(params.sent)} error={Boolean(params.error)} />
       </div>

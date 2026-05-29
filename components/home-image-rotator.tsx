@@ -39,10 +39,6 @@ export function HomeImageRotator() {
             priority={activeIndex === 0}
           />
         </div>
-        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-leaf-darker/80 to-transparent p-6 text-cream">
-          <p className="font-display text-2xl font-semibold">רגעים של משחק, הקשבה וקשר</p>
-          <p className="mt-2 text-sm text-leaf-light">מרחב הורי שמתחיל מהחיים עצמם.</p>
-        </div>
       </div>
       <div className="mt-4 flex justify-center gap-2">
         {images.map((image, index) => (
