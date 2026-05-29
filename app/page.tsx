@@ -3,7 +3,7 @@ import { HomeImageRotator } from "@/components/home-image-rotator";
 import { ContactForm } from "@/components/contact-form";
 import { FaqAccordion } from "@/components/faq-accordion";
 import { TextBlock } from "@/components/text-block";
-import { faqItems, homepageSections, providers, services } from "@/lib/content";
+import { faqItems, homepageSections, providers, services, siteConfig } from "@/lib/content";
 
 export default async function HomePage({ searchParams }: { searchParams: Promise<{ sent?: string; error?: string }> }) {
   const params = await searchParams;
@@ -28,30 +28,37 @@ export default async function HomePage({ searchParams }: { searchParams: Promise
       <TextBlock title={homepageSections.block1.title} text={homepageSections.block1.text} />
       <TextBlock title={homepageSections.block2.title} text={homepageSections.block2.text} />
 
-      <section className="mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[0.95fr_1.05fr] lg:px-8">
-        <div className="flex flex-col justify-center">
-          <SectionHeader eyebrow="הטיפוחייה שלנו" title="דוגמאות מהיום יום">
-            קירבה. מגע. נקניקייה.
-          </SectionHeader>
-        </div>
-        <HomeImageRotator />
-      </section>
-
-      <section id="contact" className="mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:px-8">
-        <SectionHeader
-          eyebrow={homepageSections.contact.eyebrow}
-          title={
-            <>
-              {homepageSections.contact.titleLine1}
-              <br />
-              {homepageSections.contact.titleLine2}
-            </>
-          }
-        >
-          {homepageSections.contact.description}
-        </SectionHeader>
-        <div className="mt-10">
-          <ContactForm returnTo="/" sent={Boolean(params.sent)} error={Boolean(params.error)} />
+      <section id="contact" className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+        <div className="grid gap-12 lg:grid-cols-[0.75fr_1.25fr] lg:items-start">
+          <div>
+            <SectionHeader
+              align="start"
+              eyebrow={homepageSections.contact.eyebrow}
+              title={
+                <>
+                  {homepageSections.contact.titleLine1}
+                  <br />
+                  {homepageSections.contact.titleLine2}
+                </>
+              }
+            >
+              {homepageSections.contact.description}
+            </SectionHeader>
+            <div className="mt-8 space-y-2 text-right leading-8 text-muted">
+              <p className="font-medium text-ink">{homepageSections.contact.emailIntro}</p>
+              <p>
+                <a href={`mailto:${siteConfig.email1}`} className="font-semibold text-brand hover:text-brand-dark">
+                  {siteConfig.email1}
+                </a>
+              </p>
+              <p>
+                <a href={`mailto:${siteConfig.email2}`} className="font-semibold text-brand hover:text-brand-dark">
+                  {siteConfig.email2}
+                </a>
+              </p>
+            </div>
+          </div>
+          <ContactForm returnTo="/" sent={Boolean(params.sent)} error={Boolean(params.error)} compact />
         </div>
       </section>
 
@@ -60,6 +67,15 @@ export default async function HomePage({ searchParams }: { searchParams: Promise
         <div className="mt-10">
           <FaqAccordion items={faqItems} />
         </div>
+      </section>
+
+      <section className="mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[0.95fr_1.05fr] lg:px-8">
+        <div className="flex flex-col justify-center">
+          <SectionHeader align="start" eyebrow="הטיפוחייה שלנו" title="דוגמאות מהיום יום">
+            קירבה. מגע. נקניקייה.
+          </SectionHeader>
+        </div>
+        <HomeImageRotator />
       </section>
 
       <TextBlock title={homepageSections.block3.title} text={homepageSections.block3.text} />

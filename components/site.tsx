@@ -77,9 +77,9 @@ export function HeroSection() {
   return (
     <section className="relative isolate overflow-hidden">
       <div className="absolute inset-x-0 top-0 -z-10 h-40 bg-gradient-to-b from-cream-dark to-transparent" />
-      <div className="mx-auto grid max-w-7xl gap-12 px-4 py-16 sm:px-6 lg:grid-cols-[1fr_0.95fr] lg:px-8 lg:py-24">
-        <div className="paper-panel rounded-[2.5rem] p-8 sm:p-12">
-          <span className="inline-flex rounded-full border border-brand/20 bg-paper px-4 py-2 text-sm font-semibold text-muted-light">
+      <div className="mx-auto grid max-w-7xl gap-12 px-4 py-16 sm:px-6 lg:grid-cols-[0.71fr_1.24fr] lg:px-8 lg:py-24">
+        <div className="p-8 sm:p-12">
+          <span className="inline-flex text-sm font-semibold tracking-[0.18em] text-leaf">
             למה אנחנו פה ?
           </span>
           <div className="space-y-5 font-display text-3xl font-semibold leading-tight text-brand sm:text-4xl">
@@ -127,9 +127,9 @@ export function HeroSection() {
   );
 }
 
-export function SectionHeader({ eyebrow, title, children }: { eyebrow?: string; title: React.ReactNode; children?: React.ReactNode }) {
+export function SectionHeader({ eyebrow, title, children, align = "center" }: { eyebrow?: string; title: React.ReactNode; children?: React.ReactNode; align?: "center" | "start" }) {
   return (
-    <div className="mx-auto max-w-3xl text-center">
+    <div className={cn("max-w-3xl", align === "center" ? "mx-auto text-center" : "text-right")}>
       {eyebrow ? <p className="text-sm font-semibold tracking-[0.18em] text-leaf">{eyebrow}</p> : null}
       <h2 className="mt-3 font-display text-4xl font-bold tracking-tight text-brand sm:text-5xl">{title}</h2>
       {children ? <p className="mt-5 text-lg leading-9 text-muted">{children}</p> : null}
@@ -177,7 +177,7 @@ export function ProfileCard({
     <Card>
       <div
         className="surface-gradient relative flex items-center justify-center overflow-hidden rounded-[2rem] text-sm font-semibold text-muted-light"
-        style={{ height: "16rem" }}
+        style={{ height: "24rem" }}
       >
         {image ? (
           <Image src={image} alt={provider.name} fill sizes="(min-width: 768px) 50vw, 100vw" className="object-contain" />
@@ -199,31 +199,67 @@ export function ProfileCard({
   );
 }
 
-export function Field({ label, name, type = "text", required, children }: { label: string; name: string; type?: string; required?: boolean; children?: React.ReactNode }) {
+export function Field({
+  label,
+  name,
+  type = "text",
+  required,
+  children,
+  compact,
+  className,
+}: {
+  label: string;
+  name: string;
+  type?: string;
+  required?: boolean;
+  children?: React.ReactNode;
+  compact?: boolean;
+  className?: string;
+}) {
   return (
-    <label className="block text-sm font-medium text-ink">
+    <label className={cn("block text-sm font-medium text-ink", className)}>
       {label}
       {children ?? (
         <input
           name={name}
           type={type}
           required={required}
-          className="mt-2 w-full rounded-2xl border border-brand/25 bg-paper px-4 py-3 text-ink shadow-sm"
+          className={cn(
+            "mt-2 w-full rounded-2xl border border-brand/25 bg-paper px-4 text-ink shadow-sm",
+            compact ? "py-2.5" : "py-3",
+          )}
         />
       )}
     </label>
   );
 }
 
-export function TextArea({ label, name, required, rows = 5 }: { label: string; name: string; required?: boolean; rows?: number }) {
+export function TextArea({
+  label,
+  name,
+  required,
+  rows = 5,
+  compact,
+  className,
+}: {
+  label: string;
+  name: string;
+  required?: boolean;
+  rows?: number;
+  compact?: boolean;
+  className?: string;
+}) {
   return (
-    <label className="block text-sm font-medium text-ink">
+    <label className={cn("block text-sm font-medium text-ink", className)}>
       {label}
       <textarea
         name={name}
         required={required}
         rows={rows}
-        className="mt-2 w-full rounded-2xl border border-brand/25 bg-paper px-4 py-3 text-ink shadow-sm"
+        className={cn(
+          "mt-2 w-full rounded-2xl border border-brand/25 bg-paper px-4 text-ink shadow-sm",
+          compact ? "py-2.5" : "py-3",
+        )}
       />
     </label>
   );
