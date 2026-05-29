@@ -65,8 +65,8 @@ export default async function HomePage({ searchParams }: { searchParams: Promise
 
       <section className="mx-auto max-w-5xl px-4 py-20 text-center sm:px-6 lg:px-8">
         <div className="paper-panel rounded-[3rem] p-8 sm:p-12">
-          <p className="text-sm font-semibold tracking-[0.2em] text-[#b56f4d]">המלצות</p>
-          <p className="mt-5 font-display text-3xl font-semibold leading-tight text-[#21483f] sm:text-4xl">
+          <p className="text-sm font-semibold tracking-[0.2em] text-leaf">המלצות</p>
+          <p className="mt-5 font-display text-3xl font-semibold leading-tight text-brand sm:text-4xl">
             כאן ניתן להוסיף סיפורי הורים ותוצאות לפרסום.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">

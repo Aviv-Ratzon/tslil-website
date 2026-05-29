@@ -28,21 +28,21 @@ export function MobileMenu({ links }: { links: string[][] }) {
         type="button"
         onClick={() => setOpen((current) => !current)}
         aria-expanded={open}
-        className="flex items-center gap-2 rounded-full border border-[#8b6f4a]/20 bg-[#fffaf1] px-4 py-2 text-sm font-semibold text-[#21483f] shadow-sm"
+        className="flex items-center gap-2.5 rounded-full border border-brand/10 bg-paper/50 px-5 py-3 text-base font-semibold text-ink shadow-sm backdrop-blur-md"
       >
-        <Menu className="h-5 w-5" aria-hidden />
+        <Menu className="h-6 w-6" aria-hidden />
         תפריט
       </button>
 
       {open ? (
-        <div className="absolute left-0 top-12 z-50 w-72 rounded-[1.5rem] border border-[#8b6f4a]/15 bg-[#fffaf1] p-3 text-sm font-medium text-[#554936] shadow-2xl shadow-[#2f2a22]/10">
+        <div className="framed-box absolute left-0 top-[calc(100%+0.75rem)] z-50 w-80 rounded-[1.75rem] bg-paper p-4 text-base font-medium text-muted shadow-lg">
           <div className="grid gap-1">
             {links.map(([label, href]) => (
               <Link
                 key={href}
                 href={href}
                 onClick={() => setOpen(false)}
-                className="rounded-2xl px-4 py-3 hover:bg-[#efe2cf] hover:text-[#21483f]"
+                className="rounded-2xl px-4 py-3.5 hover:bg-leaf-soft hover:text-leaf"
               >
                 {label}
               </Link>

@@ -25,8 +25,8 @@ export default function AboutPage() {
           ["גישה", "אנחנו משלבות הקשבה, כלים מבוססי ידע וצעדים מציאותיים לכל משפחה."],
         ].map(([title, body]) => (
           <Card key={title}>
-            <h2 className="text-xl font-semibold text-[#203632]">{title}</h2>
-            <p className="mt-3 text-stone-700">{body}</p>
+            <h2 className="text-xl font-semibold text-brand">{title}</h2>
+            <p className="mt-3 text-muted">{body}</p>
           </Card>
         ))}
       </div>

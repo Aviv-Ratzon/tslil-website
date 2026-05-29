@@ -13,20 +13,22 @@ export const navLinks = [
 
 export function Navbar() {
   return (
-    <header className="sticky top-0 z-40 border-b border-[#8b6f4a]/15 bg-[#f6efe4]/88 backdrop-blur-xl">
-      <nav className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8">
-        <Link href="/" className="group flex items-center gap-2 text-[#21483f]">
-          <span className="flex h-12 w-12 items-center justify-center overflow-hidden rounded-full border border-[#8b6f4a]/20 bg-[#fffaf1] shadow-sm sm:h-13 sm:w-13">
-            <Image src={logoImage} alt={siteConfig.name} className="h-10 w-10 object-contain sm:h-11 sm:w-11" priority />
-          </span>
-          <span>
-            <span className="block font-display text-xl font-normal leading-none tracking-tight">{siteConfig.name}</span>
-            <span className="mt-1 block text-xs text-[#6f5a3b]">מרחב להורים, הקשבה וקהילה</span>
+    <header className="sticky top-0 z-40 border-b border-brand/10 bg-cream/45 backdrop-blur-xl">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between gap-5 px-4 py-1.5 sm:px-6 sm:py-2 lg:px-8">
+        <Link href="/" className="group flex items-center gap-3 sm:gap-4">
+          <Image
+            src={logoImage}
+            alt={siteConfig.name}
+            className="h-[3.75rem] w-auto object-contain sm:h-[4.25rem]"
+            priority
+          />
+          <span className="logo-wordmark font-display text-2xl font-normal leading-none tracking-tight sm:text-3xl">
+            {siteConfig.name}
           </span>
         </Link>
-        <div className="hidden items-center gap-6 rounded-full border border-[#8b6f4a]/15 bg-[#fffaf1]/70 px-5 py-2 text-sm font-medium text-[#554936] shadow-sm md:flex">
+        <div className="hidden items-center gap-8 rounded-full border border-brand/10 bg-paper/50 px-7 py-3 text-base font-medium text-muted shadow-sm backdrop-blur-md md:flex">
           {navLinks.map(([label, href]) => (
-            <Link key={href} href={href} className="hover:text-[#21483f]">
+            <Link key={href} href={href} className="transition-colors hover:text-leaf">
               {label}
             </Link>
           ))}

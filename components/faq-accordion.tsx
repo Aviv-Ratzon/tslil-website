@@ -13,27 +13,27 @@ export function FaqAccordion({ items }: { items: { question: string; answer: str
         const isOpen = openIndex === index;
 
         return (
-          <div key={item.question} className="paper-panel overflow-hidden rounded-[1.75rem]">
+          <div key={item.question} className="paper-panel rounded-[1.75rem]">
             <button
               type="button"
               onClick={() => setOpenIndex(isOpen ? null : index)}
               aria-expanded={isOpen}
               className="flex w-full items-center justify-between gap-4 px-6 py-5 text-right"
             >
-              <span className="font-display text-xl font-semibold text-[#21483f]">{item.question}</span>
+              <span className="font-display text-xl font-semibold text-ink">{item.question}</span>
               <ChevronDown
-                className={cn("h-5 w-5 shrink-0 text-[#b56f4d] transition-transform", isOpen && "rotate-180")}
+                className={cn("h-5 w-5 shrink-0 text-leaf transition-transform", isOpen && "rotate-180")}
                 aria-hidden
               />
             </button>
             <div
               className={cn(
-                "grid transition-[grid-template-rows] duration-300 ease-out",
+                "grid overflow-hidden transition-[grid-template-rows] duration-300 ease-out",
                 isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]",
               )}
             >
-              <div className="overflow-hidden">
-                <p className="border-t border-[#8b6f4a]/15 px-6 pb-5 pt-2 leading-8 text-[#554936]">{item.answer}</p>
+              <div className="min-h-0 overflow-hidden">
+                <p className="border-t border-brand/15 px-6 pb-5 pt-2 leading-8 text-muted">{item.answer}</p>
               </div>
             </div>
           </div>

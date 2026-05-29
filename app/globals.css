@@ -3,18 +3,54 @@
 @theme {
   --font-sans: var(--font-rubik), Arial, Helvetica, sans-serif;
   --font-display: var(--font-yarden), Arial, Helvetica, sans-serif;
+
+  /* Brand gold #C58B4C */
+  --color-brand: #c58b4c;
+  --color-brand-dark: #a6723d;
+  --color-brand-darker: #7a5529;
+  --color-brand-light: #e5c4a0;
+  --color-brand-soft: #f3e2cf;
+
+  /* Cream #FDF8E5 */
+  --color-cream: #83921c;
+  --color-cream-dark: #f5edd4;
+  --color-cream-darker: #ebe3cc;
+  --color-paper: #fdf8e5;
+
+  /* Accent green #83921C */
+  --color-leaf: #83921c;
+  --color-leaf-dark: #6b7817;
+  --color-leaf-darker: #565f12;
+  --color-leaf-light: #a3b135;
+  --color-leaf-soft: #e8edcf;
+
+  /* Text derived from brand */
+  --color-ink: #3d3018;
+  --color-muted: #6b5740;
+  --color-muted-light: #8a7358;
 }
 
 :root {
   color-scheme: light;
-  --background: #f6efe4;
-  --foreground: #2f2a22;
-  --ink: #2f2a22;
-  --forest: #21483f;
-  --sage: #708b75;
-  --clay: #b56f4d;
-  --sand: #e8dcc9;
-  --paper: #fffaf1;
+  --background: rgb(253, 248, 231);
+  --foreground: #3d3018;
+  --ink: #3d3018;
+  --brand: #c58b4c;
+  --brand-dark: #a6723d;
+  --brand-darker: #7a5529;
+  --brand-light: #e5c4a0;
+  --brand-soft: #f3e2cf;
+  --cream: #fdf8e5;
+  --cream-dark: #f5edd4;
+  --cream-darker: #ebe3cc;
+  --paper: #fdf8e5;
+  --muted: #6b5740;
+  --muted-light: #8a7358;
+  --leaf: #83921c;
+  --leaf-dark: #6b7817;
+  --leaf-darker: #565f12;
+  --leaf-light: #a3b135;
+  --leaf-soft: #e8edcf;
 }
 
 * {
@@ -27,13 +63,15 @@ html {
 
 body {
   margin: 0;
-  background:
-    radial-gradient(circle at top right, rgba(181, 111, 77, 0.16), transparent 32rem),
-    radial-gradient(circle at 10% 20%, rgba(112, 139, 117, 0.2), transparent 28rem),
-    linear-gradient(135deg, rgba(255, 250, 241, 0.72), rgba(232, 220, 201, 0.72)),
-    var(--background);
+  min-height: 100vh;
+  background: linear-gradient(to bottom right, var(--cream-dark), var(--brand-light));
+  background-attachment: fixed;
   color: var(--foreground);
   font-family: var(--font-rubik), Arial, Helvetica, sans-serif;
+}
+
+.surface-gradient {
+  background: linear-gradient(to bottom right, var(--cream-dark), var(--brand-light));
 }
 
 a {
@@ -41,7 +79,7 @@ a {
 }
 
 :focus-visible {
-  outline: 3px solid #2f7468;
+  outline: 3px solid var(--leaf);
   outline-offset: 3px;
 }
 
@@ -56,21 +94,35 @@ a {
 
 .paper-panel {
   background:
-    linear-gradient(135deg, rgba(255, 250, 241, 0.96), rgba(250, 241, 226, 0.94)),
-    radial-gradient(circle at 20% 20%, rgba(181, 111, 77, 0.12), transparent 18rem);
-  border: 1px solid rgba(111, 86, 56, 0.14);
-  box-shadow: 0 24px 80px rgba(66, 49, 30, 0.08);
+    linear-gradient(135deg, rgba(253, 248, 229, 0.98), rgba(245, 237, 212, 0.95)),
+    radial-gradient(circle at 20% 20%, rgba(131, 146, 28, 0.06), transparent 18rem),
+    radial-gradient(circle at 80% 80%, rgba(197, 139, 76, 0.08), transparent 16rem);
+  border: 3px solid #ffffff;
+  box-shadow:
+    0 0 0 2px var(--leaf),
+    0 18px 48px rgba(61, 48, 24, 0.07);
+}
+
+.framed-box {
+  border: 1px solid #ffffff;
+  box-shadow: 0 0 0 1px var(--leaf);
 }
 
 .soft-divider {
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(111, 86, 56, 0.26), transparent);
+  background: linear-gradient(90deg, transparent, rgba(131, 146, 28, 0.22), rgba(197, 139, 76, 0.22), transparent);
 }
 
 .decorative-mark {
-  color: var(--clay);
+  color: var(--leaf);
   font-family: var(--font-yarden), Arial, Helvetica, sans-serif;
   font-size: clamp(2.5rem, 8vw, 6rem);
   line-height: 0.8;
-  opacity: 0.8;
+  opacity: 0.85;
+}
+
+.logo-wordmark {
+  color: var(--brand);
+  -webkit-text-stroke: 1.5px #ffffff;
+  paint-order: stroke fill;
 }
