@@ -4,6 +4,7 @@ import { HomeVideoEmbed } from "@/components/home-video-embed";
 import { ContactForm } from "@/components/contact-form";
 import { FaqAccordion } from "@/components/faq-accordion";
 import { TextBlock } from "@/components/text-block";
+import diagramImage from "@/assets/diagram.png";
 import { faqItems, homepageSections, providers, services, siteConfig } from "@/lib/content";
 
 export default async function HomePage({ searchParams }: { searchParams: Promise<{ sent?: string; error?: string }> }) {
@@ -27,7 +28,7 @@ export default async function HomePage({ searchParams }: { searchParams: Promise
       </section>
 
       <TextBlock title={homepageSections.block1.title} text={homepageSections.block1.text} />
-      <TextBlock title={homepageSections.block2.title} text={homepageSections.block2.text} />
+      <TextBlock title={homepageSections.block2.title} text={homepageSections.block2.text} align="start" />
 
       <section id="contact" className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="grid gap-12 lg:grid-cols-[0.75fr_1.25fr] lg:items-start">
@@ -79,7 +80,11 @@ export default async function HomePage({ searchParams }: { searchParams: Promise
         <HomeImageRotator />
       </section>
 
-      <TextBlock title={homepageSections.block3.title} text={homepageSections.block3.text} />
+      <TextBlock
+        title={homepageSections.block3.title}
+        image={diagramImage}
+        imageAlt={homepageSections.block3.imageAlt}
+      />
 
       <HomeVideoEmbed embedUrl={homepageSections.video.embedUrl} title={homepageSections.video.title} />
 

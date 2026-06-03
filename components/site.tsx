@@ -82,14 +82,10 @@ export function HeroSection() {
           <span className="inline-flex text-sm font-semibold tracking-[0.18em] text-leaf">
             למה אנחנו פה ?
           </span>
-          <div className="space-y-5 font-display text-3xl font-semibold leading-tight text-brand sm:text-4xl">
-           אנחנו אוכלות נקניק טעים כל יום עם חזיר וגבינה וגם אוהבות לאכול ילדים
-           <br />
-           יאם יאם יאם ילדים
-           <br />
-           ילדים זה טעים
-           <br />
-           נה נהנה 
+          <div className="space-y-5 font-display text-3xl font-semibold leading-tight text-brand sm:text-1xl">
+          מודל הטיפוחייה בא לענות על צורך שזיהינו בחיינו, ונוכחנו כי הוא משותף לעוד הרבה הורים וילדים. 
+          <br />
+          מצאנו דרך, שהיא גמישה ונתונה לעיצוב אישי, היא לוקחת בחשבון את הראיה ההתפתחותית המותאמת לצרכי הילדים, המטפלות והמטפלים בהם, והתא המשפחתי. היא אמנם דורשת השקעה רבה, ביחוד מבחינת גמישות בזמן במרחב ובחשיבה, אך ההשקעה הזו מהווה חלק מהותי מהערך והגישה האלטרנטיבית לחינוך שהטיפוחייה מעניקה ומאפשרת ליצור ולקיים.
           </div>
           <div className="mt-9 flex flex-wrap gap-3">
             <ButtonLink href="/contact">דברו איתנו</ButtonLink>

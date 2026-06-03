@@ -3,8 +3,25 @@
 import { ChevronDown } from "lucide-react";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
+import type { FaqAnswer } from "@/lib/content";
 
-export function FaqAccordion({ items }: { items: { question: string; answer: string }[] }) {
+function FaqAnswerContent({ answer }: { answer: FaqAnswer }) {
+  if (typeof answer === "string") {
+    return <p className="leading-7">{answer}</p>;
+  }
+
+  return (
+    <ul className="list-disc space-y-4 ps-6 marker:text-brand">
+      {answer.bullets.map((bullet, index) => (
+        <li key={index} className="pe-2 leading-7">
+          {bullet}
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+export function FaqAccordion({ items }: { items: { question: string; answer: FaqAnswer }[] }) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
@@ -33,7 +50,9 @@ export function FaqAccordion({ items }: { items: { question: string; answer: str
               )}
             >
               <div className="min-h-0 overflow-hidden">
-                <p className="border-t border-brand/15 px-5 pb-3 pt-2 leading-7 text-muted">{item.answer}</p>
+                <div className="border-t border-brand/15 px-5 pb-3 pt-2 text-muted">
+                  <FaqAnswerContent answer={item.answer} />
+                </div>
               </div>
             </div>
           </div>
