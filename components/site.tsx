@@ -80,12 +80,10 @@ export function HeroSection() {
       <div className="mx-auto grid max-w-7xl gap-12 px-4 py-16 sm:px-6 lg:grid-cols-[0.71fr_1.24fr] lg:px-8 lg:py-24">
         <div className="p-8 sm:p-12">
           <span className="inline-flex text-sm font-semibold tracking-[0.18em] text-leaf">
-            למה אנחנו פה ?
+            בקצרה
           </span>
-          <div className="space-y-5 font-display text-3xl font-semibold leading-tight text-brand sm:text-1xl">
-          מודל הטיפוחייה בא לענות על צורך שזיהינו בחיינו, ונוכחנו כי הוא משותף לעוד הרבה הורים וילדים. 
-          <br />
-          מצאנו דרך, שהיא גמישה ונתונה לעיצוב אישי, היא לוקחת בחשבון את הראיה ההתפתחותית המותאמת לצרכי הילדים, המטפלות והמטפלים בהם, והתא המשפחתי. היא אמנם דורשת השקעה רבה, ביחוד מבחינת גמישות בזמן במרחב ובחשיבה, אך ההשקעה הזו מהווה חלק מהותי מהערך והגישה האלטרנטיבית לחינוך שהטיפוחייה מעניקה ומאפשרת ליצור ולקיים.
+          <div className="space-y-5 font-display text-3xl leading-tight text-brand sm:text-1xl">
+          הטיפוחייה היא מודל עבור הורים שרוצים לקחת אחריות על חינוך ילדיהם בגיל הרך. זוהי דרך עבור קבוצת הורים לחבור יחדיו ולייצר מסגרת מותאמת התפתחותית וברת קיימא במקום האלטרנטיבות הקיימות - מעונות עמוסים, מטפלת פרטית יקרה או להישאר לבד בבית
           </div>
           <div className="mt-9 flex flex-wrap gap-3">
             <ButtonLink href="/contact">דברו איתנו</ButtonLink>
