@@ -1,4 +1,5 @@
-import { HeroSection, SectionHeader, ServiceCard, ProfileCard, ButtonLink } from "@/components/site";
+import { HeroSection } from "@/components/hero-section";
+import { SectionHeader, ServiceCard, ProfileCard, ButtonLink } from "@/components/site";
 import { HomeImageRotator } from "@/components/home-image-rotator";
 import { HomeVideoEmbed } from "@/components/home-video-embed";
 import { ContactForm } from "@/components/contact-form";
@@ -46,15 +47,15 @@ export default async function HomePage({ searchParams }: { searchParams: Promise
             >
               {homepageSections.contact.description}
             </SectionHeader>
-            <div className="mt-8 space-y-2 text-right leading-8 text-muted">
+            <div className="mt-8 space-y-2 text-right leading-8 text-ink">
               <p className="font-medium text-ink">{homepageSections.contact.emailIntro}</p>
               <p>
-                <a href={`mailto:${siteConfig.email1}`} className="font-semibold text-brand hover:text-brand-dark">
+                <a href={`mailto:${siteConfig.email1}`} className="font-semibold text-brand-darker hover:text-brand">
                   {siteConfig.email1}
                 </a>
               </p>
               <p>
-                <a href={`mailto:${siteConfig.email2}`} className="font-semibold text-brand hover:text-brand-dark">
+                <a href={`mailto:${siteConfig.email2}`} className="font-semibold text-brand-darker hover:text-brand">
                   {siteConfig.email2}
                 </a>
               </p>
@@ -99,8 +100,8 @@ export default async function HomePage({ searchParams }: { searchParams: Promise
 
       <section className="mx-auto max-w-5xl px-4 py-20 text-center sm:px-6 lg:px-8">
         <div className="paper-panel rounded-[3rem] p-8 sm:p-12">
-          <p className="text-sm font-semibold tracking-[0.2em] text-leaf">המלצות</p>
-          <p className="mt-5 font-display text-3xl font-semibold leading-tight text-brand sm:text-4xl">
+          <p className="text-sm font-bold tracking-[0.2em] text-leaf-dark">המלצות</p>
+          <p className="mt-5 font-display text-3xl font-semibold leading-tight text-brand-darker sm:text-4xl">
             כאן ניתן להוסיף סיפורי הורים ותוצאות לפרסום.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">

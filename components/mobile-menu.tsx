@@ -28,7 +28,7 @@ export function MobileMenu({ links }: { links: string[][] }) {
         type="button"
         onClick={() => setOpen((current) => !current)}
         aria-expanded={open}
-        className="flex items-center gap-2.5 rounded-full border border-brand/10 bg-paper/50 px-5 py-3 text-base font-semibold text-ink shadow-sm backdrop-blur-md"
+        className="flex items-center gap-2.5 rounded-full border-2 border-brand/20 bg-cream px-5 py-3 text-base font-semibold text-ink shadow-sm backdrop-blur-md"
       >
         <Menu className="h-6 w-6" aria-hidden />
         תפריט
@@ -42,7 +42,7 @@ export function MobileMenu({ links }: { links: string[][] }) {
                 key={href}
                 href={href}
                 onClick={() => setOpen(false)}
-                className="rounded-2xl px-4 py-3.5 hover:bg-leaf-soft hover:text-leaf"
+                className="rounded-2xl px-4 py-3.5 hover:bg-brand-soft hover:text-brand-darker"
               >
                 {label}
               </Link>

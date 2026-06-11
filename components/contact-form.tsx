@@ -28,7 +28,7 @@ export function ContactForm({
         <Field label="סיבת הפנייה" name="reason" className={compact ? "sm:col-span-2" : undefined}>
           <select
             name="reason"
-            className={`mt-2 w-full rounded-2xl border border-brand/25 bg-paper text-ink ${compact ? "px-4 py-2.5" : "px-4 py-3"}`}
+            className={`mt-2 w-full rounded-2xl border-2 border-brand/30 bg-paper text-ink focus:border-brand focus:outline-none ${compact ? "px-4 py-2.5" : "px-4 py-3"}`}
           >
             <option value="">בחרו סיבה</option>
             <option>קבוצה המבקשת ליווי</option>

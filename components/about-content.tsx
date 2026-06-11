@@ -5,9 +5,9 @@ import { aboutPage } from "@/lib/content";
 function NumberedSection({ title, intro, items }: AboutNumberedSection) {
   return (
     <article className="paper-panel rounded-2xl p-6 sm:p-8">
-      <h2 className="font-display text-2xl font-semibold text-brand">{title}</h2>
-      {intro ? <p className="mt-4 text-lg leading-9 text-muted">{intro}</p> : null}
-      <ol className="mt-5 list-decimal space-y-4 ps-6 text-lg leading-9 text-muted marker:font-semibold marker:text-brand">
+      <h2 className="font-display text-2xl font-semibold text-brand-darker">{title}</h2>
+      {intro ? <p className="mt-4 text-lg leading-9 text-ink">{intro}</p> : null}
+      <ol className="mt-5 list-decimal space-y-4 ps-6 text-lg leading-9 text-ink marker:font-semibold marker:text-brand">
         {items.map((item, index) => (
           <li key={index} className="pe-2">
             {item}
@@ -27,9 +27,9 @@ export function AboutContent() {
 
       <article className="paper-panel space-y-8 rounded-2xl p-6 sm:p-8">
         <div>
-          <h2 className="font-display text-2xl font-semibold text-brand">{approach.title}</h2>
-          {approach.intro ? <p className="mt-4 text-lg leading-9 text-muted">{approach.intro}</p> : null}
-          <ol className="mt-5 list-decimal space-y-4 ps-6 text-lg leading-9 text-muted marker:font-semibold marker:text-brand">
+          <h2 className="font-display text-2xl font-semibold text-brand-darker">{approach.title}</h2>
+          {approach.intro ? <p className="mt-4 text-lg leading-9 text-ink">{approach.intro}</p> : null}
+          <ol className="mt-5 list-decimal space-y-4 ps-6 text-lg leading-9 text-ink marker:font-semibold marker:text-brand">
             {approach.core.map((item, index) => (
               <li key={index} className="pe-2">
                 {item}
@@ -40,8 +40,8 @@ export function AboutContent() {
 
         {approach.subsections.map((section) => (
           <div key={section.title}>
-            <h3 className="font-display text-xl font-semibold text-brand">{section.title}</h3>
-            <ol className="mt-4 list-decimal space-y-4 ps-6 text-lg leading-9 text-muted marker:font-semibold marker:text-brand">
+            <h3 className="font-display text-xl font-semibold text-brand-darker">{section.title}</h3>
+            <ol className="mt-4 list-decimal space-y-4 ps-6 text-lg leading-9 text-ink marker:font-semibold marker:text-brand">
               {section.items.map((item, index) => (
                 <li key={index} className="pe-2">
                   {item}
@@ -53,8 +53,8 @@ export function AboutContent() {
       </article>
 
       <article className="paper-panel rounded-2xl p-6 sm:p-8">
-        <h2 className="font-display text-2xl font-semibold text-brand">{technical.title}</h2>
-        <ul className="mt-5 list-disc space-y-4 ps-6 text-lg leading-9 text-muted marker:text-brand">
+        <h2 className="font-display text-2xl font-semibold text-brand-darker">{technical.title}</h2>
+        <ul className="mt-5 list-disc space-y-4 ps-6 text-lg leading-9 text-ink marker:text-brand">
           {technical.items.map((item, index) => (
             <li key={index} className="pe-2">
               {item}

@@ -7,13 +7,13 @@ import type { FaqAnswer } from "@/lib/content";
 
 function FaqAnswerContent({ answer }: { answer: FaqAnswer }) {
   if (typeof answer === "string") {
-    return <p className="leading-7">{answer}</p>;
+    return <p className="leading-7 text-ink">{answer}</p>;
   }
 
   return (
     <ul className="list-disc space-y-4 ps-6 marker:text-brand">
       {answer.bullets.map((bullet, index) => (
-        <li key={index} className="pe-2 leading-7">
+        <li key={index} className="pe-2 leading-7 text-ink">
           {bullet}
         </li>
       ))}
@@ -39,7 +39,7 @@ export function FaqAccordion({ items }: { items: { question: string; answer: Faq
             >
               <span className="font-display text-lg font-normal leading-7 text-ink">{item.question}</span>
               <ChevronDown
-                className={cn("h-4 w-4 shrink-0 text-leaf transition-transform", isOpen && "rotate-180")}
+                className={cn("h-4 w-4 shrink-0 text-brand-dark transition-transform", isOpen && "rotate-180")}
                 aria-hidden
               />
             </button>
@@ -50,7 +50,7 @@ export function FaqAccordion({ items }: { items: { question: string; answer: Faq
               )}
             >
               <div className="min-h-0 overflow-hidden">
-                <div className="border-t border-brand/15 px-5 pb-3 pt-2 text-muted">
+                <div className="border-t border-brand/20 px-5 pb-3 pt-2">
                   <FaqAnswerContent answer={item.answer} />
                 </div>
               </div>

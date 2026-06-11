@@ -4,53 +4,53 @@
   --font-sans: var(--font-rubik), Arial, Helvetica, sans-serif;
   --font-display: var(--font-yarden), Arial, Helvetica, sans-serif;
 
-  /* Brand gold #C58B4C */
-  --color-brand: #c58b4c;
-  --color-brand-dark: #a6723d;
-  --color-brand-darker: #7a5529;
-  --color-brand-light: #e5c4a0;
-  --color-brand-soft: #f3e2cf;
+  /* Brand gold — richer & warmer */
+  --color-brand: #d4924a;
+  --color-brand-dark: #b8752f;
+  --color-brand-darker: #8f5a1f;
+  --color-brand-light: #f0d4b0;
+  --color-brand-soft: #faebd8;
 
-  /* Cream #CFDB63 */
-  --color-cream: #CFDB63;
-  --color-cream-dark: #f5edd4;
-  --color-cream-darker: #ebe3cc;
-  --color-paper: #fdf8e5;
+  /* Cream */
+  --color-cream: #fdf8e5;
+  --color-cream-dark: #f8edd8;
+  --color-cream-darker: #f0e2cc;
+  --color-paper: #fffdf6;
 
-  /* Accent green #83921C */
-  --color-leaf: #83921c;
-  --color-leaf-dark: #6b7817;
-  --color-leaf-darker: #565f12;
-  --color-leaf-light: #a3b135;
-  --color-leaf-soft: #e8edcf;
+  /* Warm terracotta accent */
+  --color-leaf: #c87832;
+  --color-leaf-dark: #a85f24;
+  --color-leaf-darker: #5c3a14;
+  --color-leaf-light: #e8b878;
+  --color-leaf-soft: #fff0e0;
 
-  /* Text derived from brand */
-  --color-ink: #3d3018;
-  --color-muted: #6b5740;
-  --color-muted-light: #8a7358;
+  /* Text — darker for contrast on warm backgrounds */
+  --color-ink: #2a1f0f;
+  --color-muted: #45321e;
+  --color-muted-light: #6b4f32;
 }
 
 :root {
   color-scheme: light;
   --background: rgb(253, 248, 231);
-  --foreground: #3d3018;
-  --ink: #3d3018;
-  --brand: #c58b4c;
-  --brand-dark: #a6723d;
-  --brand-darker: #7a5529;
-  --brand-light: #e5c4a0;
-  --brand-soft: #f3e2cf;
+  --foreground: #2a1f0f;
+  --ink: #2a1f0f;
+  --brand: #d4924a;
+  --brand-dark: #b8752f;
+  --brand-darker: #8f5a1f;
+  --brand-light: #f0d4b0;
+  --brand-soft: #faebd8;
   --cream: #fdf8e5;
-  --cream-dark: #f5edd4;
-  --cream-darker: #ebe3cc;
-  --paper: #fdf8e5;
-  --muted: #6b5740;
-  --muted-light: #8a7358;
-  --leaf: #83921c;
-  --leaf-dark: #6b7817;
-  --leaf-darker: #565f12;
-  --leaf-light: #a3b135;
-  --leaf-soft: #e8edcf;
+  --cream-dark: #f8edd8;
+  --cream-darker: #f0e2cc;
+  --paper: #fffdf6;
+  --muted: #45321e;
+  --muted-light: #6b4f32;
+  --leaf: #c87832;
+  --leaf-dark: #a85f24;
+  --leaf-darker: #5c3a14;
+  --leaf-light: #e8b878;
+  --leaf-soft: #fff0e0;
 }
 
 * {
@@ -64,14 +64,14 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
-  background: linear-gradient(to bottom right, var(--cream-dark), var(--brand-light));
+  background: linear-gradient(145deg, var(--cream) 0%, var(--brand-soft) 45%, var(--brand-light) 100%);
   background-attachment: fixed;
   color: var(--foreground);
   font-family: var(--font-rubik), Arial, Helvetica, sans-serif;
 }
 
 .surface-gradient {
-  background: linear-gradient(to bottom right, var(--cream-dark), var(--brand-light));
+  background: linear-gradient(145deg, var(--cream) 0%, var(--brand-soft) 45%, var(--brand-light) 100%);
 }
 
 a {
@@ -79,7 +79,7 @@ a {
 }
 
 :focus-visible {
-  outline: 3px solid var(--leaf);
+  outline: 3px solid var(--brand-dark);
   outline-offset: 3px;
 }
 
@@ -93,26 +93,26 @@ a {
 }
 
 .paper-panel {
-  background-color: #fdf8e5;
+  background-color: var(--paper);
   border: 3px solid #ffffff;
   box-shadow:
-    0 0 0 2px var(--leaf),
-    0 18px 48px rgba(61, 48, 24, 0.07);
+    0 0 0 2px var(--brand),
+    0 18px 48px rgba(42, 31, 15, 0.1);
 }
 
 .framed-box {
-  background-color: #fdf8e5;
+  background-color: var(--paper);
   border: 1px solid #ffffff;
-  box-shadow: 0 0 0 1px var(--leaf);
+  box-shadow: 0 0 0 1.5px var(--brand-dark);
 }
 
 .soft-divider {
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(131, 146, 28, 0.22), rgba(197, 139, 76, 0.22), transparent);
+  background: linear-gradient(90deg, transparent, rgba(200, 120, 50, 0.35), rgba(212, 146, 74, 0.45), transparent);
 }
 
 .decorative-mark {
-  color: var(--leaf);
+  color: var(--brand-dark);
   font-family: var(--font-yarden), Arial, Helvetica, sans-serif;
   font-size: clamp(2.5rem, 8vw, 6rem);
   line-height: 0.8;
@@ -120,7 +120,7 @@ a {
 }
 
 .logo-wordmark {
-  color: var(--brand);
+  color: var(--brand-darker);
   /* -webkit-text-stroke: 1.5px #ffffff;
   paint-order: stroke fill; */
 }

@@ -13,7 +13,7 @@ export const navLinks = [
 
 export function Navbar() {
   return (
-    <header className="sticky top-0 z-40 border-b border-brand/10 bg-cream/45 backdrop-blur-xl">
+    <header className="sticky top-0 z-40 border-b-2 border-brand/25 bg-paper/90 backdrop-blur-xl shadow-sm shadow-brand/10">
       <nav className="mx-auto flex max-w-7xl items-center justify-between gap-5 px-4 py-1.5 sm:px-6 sm:py-2 lg:px-8">
         <Link href="/" className="group flex items-center gap-3 sm:gap-4">
           <Image
@@ -26,9 +26,9 @@ export function Navbar() {
             {siteConfig.name}
           </span>
         </Link>
-        <div className="hidden items-center gap-8 rounded-full border border-brand/10 bg-paper/50 px-7 py-3 text-base font-medium text-muted shadow-sm backdrop-blur-md md:flex">
+        <div className="hidden items-center gap-8 rounded-full border-2 border-brand/20 bg-cream px-7 py-3 text-base font-semibold text-ink shadow-sm backdrop-blur-md md:flex">
           {navLinks.map(([label, href]) => (
-            <Link key={href} href={href} className="transition-colors hover:text-leaf">
+            <Link key={href} href={href} className="transition-colors hover:text-brand-dark">
               {label}
             </Link>
           ))}

@@ -26,7 +26,7 @@ function isNumberedListBlock(body: TextBlockBody): body is NumberedListBlock {
 
 function NumberedListContent({ content }: { content: NumberedListBlock }) {
   return (
-    <div className="mt-5 space-y-5 text-lg leading-9 text-muted">
+    <div className="space-y-5">
       <ol className="list-decimal space-y-4 ps-6 marker:font-semibold marker:text-brand">
         {content.items.map((item, index) => (
           <li key={index} className="pe-2">
@@ -41,7 +41,7 @@ function NumberedListContent({ content }: { content: NumberedListBlock }) {
             href={content.formLink.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="font-semibold text-leaf underline decoration-leaf/40 underline-offset-4 hover:text-leaf-dark"
+            className="font-semibold text-brand-darker underline decoration-brand/50 underline-offset-4 hover:text-brand"
           >
             {content.formLink.label}
           </Link>
