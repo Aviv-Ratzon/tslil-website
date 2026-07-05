@@ -1,4 +1,15 @@
-export type ContentTextSegment = { text: string; bold?: boolean };
+export type ContentTextSegment = { text: string; bold?: boolean; href?: string };
+
+/** One paragraph: plain string, or segments with optional bold emphasis or links. */
+export type RichParagraph = string | ContentTextSegment[];
+
+export type RichContentBlock =
+  | { type: "heading"; text: string }
+  | { type: "paragraph"; text: RichParagraph }
+  | { type: "bullets"; items: RichParagraph[] };
+
+/** Rich page copy: headings, paragraphs, and bullet lists. */
+export type RichTextBody = RichContentBlock[];
 
 export type NumberedListBlock = {
   items: (string | ContentTextSegment[])[];
@@ -7,6 +18,8 @@ export type NumberedListBlock = {
 };
 
 export type TextBlockBody = string | ContentTextSegment[] | NumberedListBlock;
+
+import { heroWhatIsBody } from "@/lib/content/hero-what-is-body";
 
 export const siteConfig = {
   name: "הטיפוחייה",
@@ -19,7 +32,7 @@ export const homepageSections = {
   heroWhatIs: {
     titleLine1: "מה היא",
     titleLine2: "הטיפוחייה ?",
-    body: "הרעיון עלה כשהיה לנו ברור שמצד אחד אנחנו לא מוכנות עדיין לשלוח את הילדים למעון לקראת גיל שנה, ומצד שני, אנחנו רוצות יותר נפרדות, פניות לעיסוקים ולקריירה. עבור ילדנו, רצינו קבוצה קטנה, התואמת לצרכי הגיל הרך, במרחב שיש בו פניות לחקירה ולקשר, למענה אישי יחד עם פיתוח מיומנויות חברתיות. הטיפוחייה הראשונה היתה מורכבת מארבעה ילדים, ארבע אמהות ומטפלת אחת (מטפחת), ופעלה לשלושה ימים בשבוע. בכל יום נמצאו שתי מבוגרות עם קבוצת הילדים, ויצרנו שגרת פעילות מהנה לכולנו, תוך שיח וקבלת החלטות משותפת. כל זה בעלות חודשית ממוצעת של 1300 ש''ח. בעקבות ההצלחה הכבירה של הרעיון יחד עם עניין וצורך שגילינו בקרב הורים ברחבי הארץ, נולדה המחשבה להפוך אותו לנגיש לכולם. התוודענו לעוד קבוצות הורים שמקימות צורות שונות של מענים משותפים אחרים, והתחלנו לעזור לקבוצות נוספות לקום. כיום המודל המוצע הוא גמיש וניתן לעיצוב בהתאם לצרכי המשפחות: גודל הקבוצה יכול לנוע בין 3-6 ילדים, כמות הימים והשעות נתונה לבחירה וכן חלוקת הזמנים בין ההורים והמטפחת.",
+    body: heroWhatIsBody,
   },
   block1: {
     title: "מה אנחנו מציעות",

@@ -1,5 +1,6 @@
 import { BookOpen, Heart, ShieldCheck } from "lucide-react";
 import { ButtonLink } from "@/components/site";
+import { RichContentBody } from "@/components/rich-text";
 import { HeroImageRotator } from "@/components/hero-image-rotator";
 import { homepageSections } from "@/lib/content";
 
@@ -37,7 +38,9 @@ export function HeroSection() {
             <p className="pr-0 text-leaf-dark">{homepageSections.heroWhatIs.titleLine1}</p>
             <p className="pr-8 font-normal text-brand-darker">{homepageSections.heroWhatIs.titleLine2}</p>
           </div>
-          <p className="mt-5 text-xl font-normal leading-9 text-ink sm:text-2xl">{homepageSections.heroWhatIs.body}</p>
+          <div className="mt-5">
+            <RichContentBody blocks={homepageSections.heroWhatIs.body} />
+          </div>
           <div className="soft-divider my-8" />
           <div className="grid gap-4 sm:grid-cols-3">
             {[

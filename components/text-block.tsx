@@ -1,24 +1,9 @@
 import Link from "next/link";
 import type { StaticImageData } from "next/image";
 import { DiagramLightbox } from "@/components/diagram-lightbox";
+import { RichText } from "@/components/rich-text";
 import { SectionHeader } from "@/components/site";
 import type { ContentTextSegment, NumberedListBlock, TextBlockBody } from "@/lib/content";
-
-function RichText({ segments }: { segments: ContentTextSegment[] }) {
-  return (
-    <>
-      {segments.map((segment, index) =>
-        segment.bold ? (
-          <strong key={index} className="font-bold">
-            {segment.text}
-          </strong>
-        ) : (
-          <span key={index}>{segment.text}</span>
-        ),
-      )}
-    </>
-  );
-}
 
 function isNumberedListBlock(body: TextBlockBody): body is NumberedListBlock {
   return typeof body === "object" && body !== null && !Array.isArray(body) && "items" in body;
