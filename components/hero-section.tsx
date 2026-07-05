@@ -35,8 +35,8 @@ export function HeroSection() {
       <div className="mt-12 w-full border-y-2 border-brand/15 bg-paper sm:mt-16">
         <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-12 lg:px-8">
           <div className="space-y-5 font-display text-3xl font-semibold leading-tight text-brand-darker sm:text-4xl">
-            <p className="pr-0 text-leaf-dark">{homepageSections.heroWhatIs.titleLine1}</p>
-            <p className="pr-8 font-normal text-brand-darker">{homepageSections.heroWhatIs.titleLine2}</p>
+            {/* <p className="pr-0 text-leaf-dark">מה היא</p>
+            <p className="pr-8 font-normal text-brand-darker">הטיפוחייה ?</p> */}
           </div>
           <div className="mt-5">
             <RichContentBody blocks={homepageSections.heroWhatIs.body} />

@@ -1,24 +1,101 @@
 "use client";
 
+import Link from "next/link";
 import { ChevronDown } from "lucide-react";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 import type { FaqAnswer } from "@/lib/content";
+import { aboutSectionHref } from "@/lib/content";
 
-function FaqAnswerContent({ answer }: { answer: FaqAnswer }) {
-  if (typeof answer === "string") {
-    return <p className="leading-7 text-ink">{answer}</p>;
-  }
-
+function FaqBulletList({ bullets }: { bullets: string[] }) {
   return (
     <ul className="list-disc space-y-4 ps-6 marker:text-brand">
-      {answer.bullets.map((bullet, index) => (
+      {bullets.map((bullet, index) => (
         <li key={index} className="pe-2 leading-7 text-ink">
           {bullet}
         </li>
       ))}
     </ul>
   );
+}
+
+function FaqExpandable({ label, bullets }: { label: string; bullets: string[] }) {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <div className="mt-5">
+      <button
+        type="button"
+        onClick={() => setOpen((value) => !value)}
+        aria-expanded={open}
+        className="inline-flex items-center gap-2 rounded-full bg-leaf-soft px-4 py-2 text-sm font-semibold text-leaf-darker transition hover:bg-leaf-light/40"
+      >
+        {label}
+        <ChevronDown className={cn("h-4 w-4 transition-transform", open && "rotate-180")} aria-hidden />
+      </button>
+      <div
+        className={cn(
+          "grid overflow-hidden transition-[grid-template-rows] duration-300 ease-out",
+          open ? "mt-4 grid-rows-[1fr]" : "grid-rows-[0fr]",
+        )}
+      >
+        <div className="min-h-0 overflow-hidden">
+          <FaqBulletList bullets={bullets} />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function isExpandAnswer(answer: FaqAnswer): answer is { intro: string; expand: { label: string; bullets: string[] } } {
+  return typeof answer === "object" && answer !== null && "expand" in answer;
+}
+
+function isBulletsAnswer(
+  answer: FaqAnswer,
+): answer is { bullets: string[]; intro?: string; note?: string } {
+  return typeof answer === "object" && answer !== null && "bullets" in answer;
+}
+
+function FaqAnswerContent({ answer }: { answer: FaqAnswer }) {
+  if (typeof answer === "string") {
+    return <p className="leading-7 text-ink">{answer}</p>;
+  }
+
+  if (isExpandAnswer(answer)) {
+    return (
+      <div className="space-y-1">
+        <p className="leading-7 text-ink">{answer.intro}</p>
+        <FaqExpandable label={answer.expand.label} bullets={answer.expand.bullets} />
+      </div>
+    );
+  }
+
+  if (isBulletsAnswer(answer)) {
+    return (
+      <div className="space-y-4">
+        {answer.intro ? <p className="leading-7 text-ink">{answer.intro}</p> : null}
+        <FaqBulletList bullets={answer.bullets} />
+        {answer.note ? (
+          <p className="text-sm leading-7 text-muted">
+            {answer.note.includes("עוד פרטים טכניים") ? (
+              <>
+                מחשבון ההוצאות יופיע גם תחת סקשן{" "}
+                <Link href={aboutSectionHref.technical} className="font-semibold text-brand-darker underline decoration-brand/50 underline-offset-4 hover:text-brand">
+                  עוד פרטים טכניים
+                </Link>{" "}
+                בעמוד האודות.
+              </>
+            ) : (
+              answer.note
+            )}
+          </p>
+        ) : null}
+      </div>
+    );
+  }
+
+  return null;
 }
 
 export function FaqAccordion({ items }: { items: { question: string; answer: FaqAnswer }[] }) {

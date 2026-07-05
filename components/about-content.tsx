@@ -1,67 +1,86 @@
+import { RichParagraph } from "@/components/rich-text";
 import { SectionHeader } from "@/components/site";
-import type { AboutNumberedSection } from "@/lib/content";
+import type { RichParagraph as RichParagraphType } from "@/lib/content";
 import { aboutPage } from "@/lib/content";
 
-function NumberedSection({ title, intro, items }: AboutNumberedSection) {
+function AboutParagraph({ paragraph }: { paragraph: RichParagraphType }) {
   return (
-    <article className="paper-panel rounded-2xl p-6 sm:p-8">
+    <p className="text-lg leading-9 text-ink">
+      <RichParagraph paragraph={paragraph} />
+    </p>
+  );
+}
+
+function AboutListItem({ item }: { item: RichParagraphType }) {
+  return (
+    <li className="pe-2">
+      <RichParagraph paragraph={item} />
+    </li>
+  );
+}
+
+function AboutSection({
+  id,
+  title,
+  children,
+}: {
+  id: string;
+  title: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <article id={id} className="scroll-mt-28 paper-panel rounded-2xl p-6 sm:p-8">
       <h2 className="font-display text-2xl font-semibold text-brand-darker">{title}</h2>
-      {intro ? <p className="mt-4 text-lg leading-9 text-ink">{intro}</p> : null}
-      <ol className="mt-5 list-decimal space-y-4 ps-6 text-lg leading-9 text-ink marker:font-semibold marker:text-brand">
-        {items.map((item, index) => (
-          <li key={index} className="pe-2">
-            {item}
-          </li>
-        ))}
-      </ol>
+      <div className="mt-4 space-y-5">{children}</div>
     </article>
   );
 }
 
 export function AboutContent() {
-  const { goals, approach, technical } = aboutPage;
+  const { philosophy, goals, method, technical } = aboutPage;
 
   return (
     <div className="space-y-8">
-      <NumberedSection title={goals.title} items={goals.items} />
+      <AboutSection id={philosophy.id} title={philosophy.title}>
+        {philosophy.paragraphs.map((paragraph, index) => (
+          <AboutParagraph key={index} paragraph={paragraph} />
+        ))}
+      </AboutSection>
 
-      <article className="paper-panel space-y-8 rounded-2xl p-6 sm:p-8">
-        <div>
-          <h2 className="font-display text-2xl font-semibold text-brand-darker">{approach.title}</h2>
-          {approach.intro ? <p className="mt-4 text-lg leading-9 text-ink">{approach.intro}</p> : null}
-          <ol className="mt-5 list-decimal space-y-4 ps-6 text-lg leading-9 text-ink marker:font-semibold marker:text-brand">
-            {approach.core.map((item, index) => (
-              <li key={index} className="pe-2">
-                {item}
-              </li>
-            ))}
-          </ol>
-        </div>
+      <AboutSection id={goals.id} title={goals.title}>
+        <ol className="list-decimal space-y-4 ps-6 text-lg leading-9 text-ink marker:font-semibold marker:text-brand">
+          {goals.items.map((item, index) => (
+            <AboutListItem key={index} item={item} />
+          ))}
+        </ol>
+      </AboutSection>
 
-        {approach.subsections.map((section) => (
+      <AboutSection id={method.id} title={method.title}>
+        {method.intro ? <AboutParagraph paragraph={method.intro} /> : null}
+        <ul className="list-disc space-y-4 ps-6 text-lg leading-9 text-ink marker:text-brand">
+          {method.core.map((item, index) => (
+            <AboutListItem key={index} item={item} />
+          ))}
+        </ul>
+        {method.subsections.map((section) => (
           <div key={section.title}>
             <h3 className="font-display text-xl font-semibold text-brand-darker">{section.title}</h3>
             <ol className="mt-4 list-decimal space-y-4 ps-6 text-lg leading-9 text-ink marker:font-semibold marker:text-brand">
               {section.items.map((item, index) => (
-                <li key={index} className="pe-2">
-                  {item}
-                </li>
+                <AboutListItem key={index} item={item} />
               ))}
             </ol>
           </div>
         ))}
-      </article>
+      </AboutSection>
 
-      <article className="paper-panel rounded-2xl p-6 sm:p-8">
-        <h2 className="font-display text-2xl font-semibold text-brand-darker">{technical.title}</h2>
-        <ul className="mt-5 list-disc space-y-4 ps-6 text-lg leading-9 text-ink marker:text-brand">
+      <AboutSection id={technical.id} title={technical.title}>
+        <ul className="list-disc space-y-4 ps-6 text-lg leading-9 text-ink marker:text-brand">
           {technical.items.map((item, index) => (
-            <li key={index} className="pe-2">
-              {item}
-            </li>
+            <AboutListItem key={index} item={item} />
           ))}
         </ul>
-      </article>
+      </AboutSection>
     </div>
   );
 }

@@ -115,7 +115,12 @@ export function ServiceCard({ service }: { service: { title: string; description
 export function ProfileCard({
   provider,
 }: {
-  provider: { name: string; title: string; expertise: string[]; bio: string; image?: keyof typeof providerImages };
+  provider: {
+    name: string;
+    credentials: string;
+    story: string;
+    image?: keyof typeof providerImages;
+  };
 }) {
   const image = provider.image ? providerImages[provider.image] : null;
 
@@ -132,15 +137,8 @@ export function ProfileCard({
         )}
       </div>
       <h3 className="mt-6 font-display text-3xl font-semibold text-brand-darker">{provider.name}</h3>
-      <p className="text-sm font-semibold text-leaf-dark">{provider.title}</p>
-      <p className="mt-4 leading-7 text-ink">{provider.bio}</p>
-      <div className="mt-4 flex flex-wrap gap-2">
-        {provider.expertise.map((item) => (
-          <span key={item} className="rounded-full bg-brand-soft px-3 py-1 text-xs font-semibold text-brand-darker">
-            {item}
-          </span>
-        ))}
-      </div>
+      <p className="mt-4 leading-7 text-leaf-dark">{provider.credentials}</p>
+      <p className="mt-4 leading-7 text-muted">{provider.story}</p>
     </Card>
   );
 }
