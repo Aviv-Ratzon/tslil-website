@@ -7,7 +7,7 @@ import logoImage from "@/assets/logo.png";
 export const navLinks = [
   ["בית", "/"],
   ["אודות", "/about"],
-  ["שירותים", "/services"],
+  ["הצעדים הבאים", "/next-steps"],
   ["יצירת קשר", "/contact"],
 ] as const;
 

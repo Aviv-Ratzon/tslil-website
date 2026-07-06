@@ -5,7 +5,6 @@ import { HomeVideoEmbed } from "@/components/home-video-embed";
 import { ContactForm } from "@/components/contact-form";
 import { FaqAccordion } from "@/components/faq-accordion";
 import { TextBlock } from "@/components/text-block";
-import diagramImage from "@/assets/diagram.png";
 import { faqItems, homepageSections, homepageVisibility, services, siteConfig, teamSection, whatIsTipuchiyaSection } from "@/lib/content";
 
 export default async function HomePage({ searchParams }: { searchParams: Promise<{ sent?: string; error?: string }> }) {
@@ -92,12 +91,6 @@ export default async function HomePage({ searchParams }: { searchParams: Promise
         </section>
       ) : null}
 
-      <TextBlock
-        title={homepageSections.block3.title}
-        image={diagramImage}
-        imageAlt={homepageSections.block3.imageAlt}
-      />
-
       {homepageVisibility.video ? (
         <HomeVideoEmbed embedUrl={homepageSections.video.embedUrl} title={homepageSections.video.title} />
       ) : null}
@@ -122,8 +115,8 @@ export default async function HomePage({ searchParams }: { searchParams: Promise
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-3">
               <ButtonLink href="/contact">דברו איתנו</ButtonLink>
-              <ButtonLink href="/services" variant="secondary">
-                צפייה בשירותים
+              <ButtonLink href="/next-steps" variant="secondary">
+                הצעדים הבאים
               </ButtonLink>
             </div>
           </div>

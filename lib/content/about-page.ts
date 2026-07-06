@@ -5,14 +5,14 @@ export const aboutPageAnchors = {
   approach: "gisha",
   goals: "matrot",
   method: "shita",
-  technical: "technical",
 } as const;
 
 export const aboutSectionHref = {
   approach: `/about#${aboutPageAnchors.approach}`,
   goals: `/about#${aboutPageAnchors.goals}`,
   method: `/about#${aboutPageAnchors.method}`,
-  technical: `/about#${aboutPageAnchors.technical}`,
+  technical: "/next-steps#technical",
+  expenseCalculator: "/next-steps#expense-calculator",
 } as const;
 
 export type AboutListSection = {
@@ -170,15 +170,4 @@ export const aboutPage = {
       },
     ],
   } satisfies AboutMethodSection,
-  technical: {
-    id: aboutPageAnchors.technical,
-    title: "עוד פרטים טכניים:",
-    items: [
-      "גילאים: המסגרת מיועדת עבור טווח הגילאים שבין חצי שנה ועד שנתיים (גיל הילד/ה בתחילת שנת הפעילות)",
-      "באופן אידאלי, בין הילד הכי גדול בקבוצה להכי קטן פער של עד חצי שנה.",
-      "גרים בסמוך: מרחק המקובל על כולם לנסוע/ללכת באופן שגרתי.",
-      "מחשבון הוצאות — בקרוב.",
-      "קישור לקובץ המאגד את מכלול ההבניה והרעיון:",
-    ],
-  } satisfies AboutListSection,
 };

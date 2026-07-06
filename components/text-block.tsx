@@ -3,6 +3,7 @@ import type { StaticImageData } from "next/image";
 import { DiagramLightbox } from "@/components/diagram-lightbox";
 import { RichParagraph, RichText } from "@/components/rich-text";
 import { SectionHeader } from "@/components/site";
+import { cn } from "@/lib/utils";
 import type {
   AboutLinkChip,
   NumberedListBlock,
@@ -19,14 +20,35 @@ function isHighlightItem(item: NumberedListItem): item is NumberedListHighlightI
   return typeof item === "object" && item !== null && !Array.isArray(item) && "intro" in item && "highlight" in item;
 }
 
+function ListItemExpansion({
+  children,
+  display,
+}: {
+  children: React.ReactNode;
+  display?: boolean;
+}) {
+  return (
+    <div
+      className={cn(
+        "mt-3 border-s-2 border-brand/40 bg-brand-soft/50 py-3 ps-4 pe-3 sm:ps-5",
+        "rounded-s-xl",
+        display && "font-display text-base leading-7 text-brand-darker sm:text-[1.0625rem]",
+        !display && "text-base leading-7 text-ink",
+      )}
+    >
+      {children}
+    </div>
+  );
+}
+
 function ListItemContent({ item }: { item: NumberedListItem }) {
   if (isHighlightItem(item)) {
     return (
       <>
         <RichParagraph paragraph={item.intro} />
-        <p className="mt-3 font-display text-xl leading-9 text-brand-darker sm:text-2xl">
+        <ListItemExpansion display>
           <RichParagraph paragraph={item.highlight} />
-        </p>
+        </ListItemExpansion>
       </>
     );
   }
@@ -57,24 +79,26 @@ function AboutLinkChips({ links }: { links: AboutLinkChip[] }) {
 }
 
 function NumberedListContent({ content }: { content: NumberedListBlock }) {
-  const closingClassName = content.closingDisplay
-    ? "font-display text-xl leading-9 text-brand-darker sm:text-2xl"
-    : undefined;
+  const lastItemIndex = content.items.length - 1;
 
   return (
     <div className="space-y-5">
-      <ol className="list-decimal space-y-4 ps-6 text-justify marker:font-semibold marker:text-brand">
+      <ol className="list-decimal space-y-5 ps-6 text-justify marker:font-semibold marker:text-brand">
         {content.items.map((item, index) => (
           <li key={index} className="pe-2 whitespace-pre-line">
             <ListItemContent item={item} />
+            {index === lastItemIndex && content.closing ? (
+              <ListItemExpansion display={content.closingDisplay}>
+                {typeof content.closing === "string" ? (
+                  content.closing
+                ) : (
+                  <RichParagraph paragraph={content.closing} />
+                )}
+              </ListItemExpansion>
+            ) : null}
           </li>
         ))}
       </ol>
-      {content.closing ? (
-        <p className={closingClassName ? `${closingClassName} text-justify` : "text-justify"}>
-          {typeof content.closing === "string" ? content.closing : <RichParagraph paragraph={content.closing} />}
-        </p>
-      ) : null}
       {content.formLink ? (
         <p>
           <Link

@@ -19,8 +19,8 @@ export function HeroSection() {
             </div>
             <div className="mt-9 flex flex-wrap gap-3">
               <ButtonLink href="/contact">דברו איתנו</ButtonLink>
-              <ButtonLink href="/services" variant="secondary">
-                צפייה בשירותים
+              <ButtonLink href="/next-steps" variant="secondary">
+                הצעדים הבאים
               </ButtonLink>
             </div>
           </div>

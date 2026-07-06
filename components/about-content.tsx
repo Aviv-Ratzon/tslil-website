@@ -37,7 +37,7 @@ function AboutSection({
 }
 
 export function AboutContent() {
-  const { philosophy, goals, method, technical } = aboutPage;
+  const { philosophy, goals, method } = aboutPage;
 
   return (
     <div className="space-y-8">
@@ -72,14 +72,6 @@ export function AboutContent() {
             </ol>
           </div>
         ))}
-      </AboutSection>
-
-      <AboutSection id={technical.id} title={technical.title}>
-        <ul className="list-disc space-y-4 ps-6 text-justify text-lg leading-9 text-ink marker:text-brand">
-          {technical.items.map((item, index) => (
-            <AboutListItem key={index} item={item} />
-          ))}
-        </ul>
       </AboutSection>
     </div>
   );

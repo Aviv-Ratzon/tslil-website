@@ -78,13 +78,24 @@ function FaqAnswerContent({ answer }: { answer: FaqAnswer }) {
         <FaqBulletList bullets={answer.bullets} />
         {answer.note ? (
           <p className="text-sm leading-7 text-muted">
-            {answer.note.includes("עוד פרטים טכניים") ? (
+            {answer.note === "expense-calculator" ? (
+              <>
+                ניתן לנסות את{" "}
+                <Link
+                  href={aboutSectionHref.expenseCalculator}
+                  className="font-semibold text-brand-darker underline decoration-brand/50 underline-offset-4 hover:text-brand"
+                >
+                  מחשבון ההוצאות
+                </Link>{" "}
+                בעמוד הצעדים הבאים.
+              </>
+            ) : answer.note.includes("עוד פרטים טכניים") ? (
               <>
                 מחשבון ההוצאות יופיע גם תחת סקשן{" "}
                 <Link href={aboutSectionHref.technical} className="font-semibold text-brand-darker underline decoration-brand/50 underline-offset-4 hover:text-brand">
                   עוד פרטים טכניים
                 </Link>{" "}
-                בעמוד האודות.
+                בעמוד הצעדים הבאים.
               </>
             ) : (
               answer.note
