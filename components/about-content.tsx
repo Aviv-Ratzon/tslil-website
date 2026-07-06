@@ -5,7 +5,7 @@ import { aboutPage } from "@/lib/content";
 
 function AboutParagraph({ paragraph }: { paragraph: RichParagraphType }) {
   return (
-    <p className="text-lg leading-9 text-ink">
+    <p className="text-justify text-lg leading-9 text-ink">
       <RichParagraph paragraph={paragraph} />
     </p>
   );
@@ -48,7 +48,7 @@ export function AboutContent() {
       </AboutSection>
 
       <AboutSection id={goals.id} title={goals.title}>
-        <ol className="list-decimal space-y-4 ps-6 text-lg leading-9 text-ink marker:font-semibold marker:text-brand">
+        <ol className="list-decimal space-y-4 ps-6 text-justify text-lg leading-9 text-ink marker:font-semibold marker:text-brand">
           {goals.items.map((item, index) => (
             <AboutListItem key={index} item={item} />
           ))}
@@ -57,7 +57,7 @@ export function AboutContent() {
 
       <AboutSection id={method.id} title={method.title}>
         {method.intro ? <AboutParagraph paragraph={method.intro} /> : null}
-        <ul className="list-disc space-y-4 ps-6 text-lg leading-9 text-ink marker:text-brand">
+        <ul className="list-disc space-y-4 ps-6 text-justify text-lg leading-9 text-ink marker:text-brand">
           {method.core.map((item, index) => (
             <AboutListItem key={index} item={item} />
           ))}
@@ -65,7 +65,7 @@ export function AboutContent() {
         {method.subsections.map((section) => (
           <div key={section.title}>
             <h3 className="font-display text-xl font-semibold text-brand-darker">{section.title}</h3>
-            <ol className="mt-4 list-decimal space-y-4 ps-6 text-lg leading-9 text-ink marker:font-semibold marker:text-brand">
+            <ol className="mt-4 list-decimal space-y-4 ps-6 text-justify text-lg leading-9 text-ink marker:font-semibold marker:text-brand">
               {section.items.map((item, index) => (
                 <AboutListItem key={index} item={item} />
               ))}
@@ -75,7 +75,7 @@ export function AboutContent() {
       </AboutSection>
 
       <AboutSection id={technical.id} title={technical.title}>
-        <ul className="list-disc space-y-4 ps-6 text-lg leading-9 text-ink marker:text-brand">
+        <ul className="list-disc space-y-4 ps-6 text-justify text-lg leading-9 text-ink marker:text-brand">
           {technical.items.map((item, index) => (
             <AboutListItem key={index} item={item} />
           ))}

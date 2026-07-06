@@ -11,7 +11,7 @@ function FaqBulletList({ bullets }: { bullets: string[] }) {
   return (
     <ul className="list-disc space-y-4 ps-6 marker:text-brand">
       {bullets.map((bullet, index) => (
-        <li key={index} className="pe-2 leading-7 text-ink">
+        <li key={index} className="pe-2 text-justify leading-7 text-ink">
           {bullet}
         </li>
       ))}
@@ -59,13 +59,13 @@ function isBulletsAnswer(
 
 function FaqAnswerContent({ answer }: { answer: FaqAnswer }) {
   if (typeof answer === "string") {
-    return <p className="leading-7 text-ink">{answer}</p>;
+    return <p className="text-justify leading-7 text-ink">{answer}</p>;
   }
 
   if (isExpandAnswer(answer)) {
     return (
       <div className="space-y-1">
-        <p className="leading-7 text-ink">{answer.intro}</p>
+        <p className="text-justify leading-7 text-ink">{answer.intro}</p>
         <FaqExpandable label={answer.expand.label} bullets={answer.expand.bullets} />
       </div>
     );
@@ -74,7 +74,7 @@ function FaqAnswerContent({ answer }: { answer: FaqAnswer }) {
   if (isBulletsAnswer(answer)) {
     return (
       <div className="space-y-4">
-        {answer.intro ? <p className="leading-7 text-ink">{answer.intro}</p> : null}
+        {answer.intro ? <p className="text-justify leading-7 text-ink">{answer.intro}</p> : null}
         <FaqBulletList bullets={answer.bullets} />
         {answer.note ? (
           <p className="text-sm leading-7 text-muted">

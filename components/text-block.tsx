@@ -63,7 +63,7 @@ function NumberedListContent({ content }: { content: NumberedListBlock }) {
 
   return (
     <div className="space-y-5">
-      <ol className="list-decimal space-y-4 ps-6 marker:font-semibold marker:text-brand">
+      <ol className="list-decimal space-y-4 ps-6 text-justify marker:font-semibold marker:text-brand">
         {content.items.map((item, index) => (
           <li key={index} className="pe-2 whitespace-pre-line">
             <ListItemContent item={item} />
@@ -71,7 +71,7 @@ function NumberedListContent({ content }: { content: NumberedListBlock }) {
         ))}
       </ol>
       {content.closing ? (
-        <p className={closingClassName}>
+        <p className={closingClassName ? `${closingClassName} text-justify` : "text-justify"}>
           {typeof content.closing === "string" ? content.closing : <RichParagraph paragraph={content.closing} />}
         </p>
       ) : null}

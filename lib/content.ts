@@ -4,9 +4,9 @@
 export type RichParagraph = string | ContentTextSegment[];
 
 export type RichContentBlock =
-  | { type: "heading"; text: string }
-  | { type: "paragraph"; text: RichParagraph }
-  | { type: "bullets"; items: RichParagraph[] };
+  | { type: "heading"; text: string; subtitle?: string; align?: "center" | "start"; spacingBefore?: "lg" }
+  | { type: "paragraph"; text: RichParagraph; align?: "center" | "start" }
+  | { type: "bullets"; items: RichParagraph[]; align?: "center" | "start"; variant?: "disc" | "steps" };
 
 /** Rich page copy: headings, paragraphs, and bullet lists. */
 export type RichTextBody = RichContentBlock[];

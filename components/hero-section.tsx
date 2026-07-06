@@ -14,7 +14,7 @@ export function HeroSection() {
             <span className="inline-flex text-sm font-bold tracking-[0.18em] text-leaf-dark">
               בקצרה
             </span>
-            <div className="space-y-5 font-display text-1xl font-semibold leading-tight text-brand-darker sm:text-3xl">
+            <div className="space-y-5 text-justify font-display text-1xl font-semibold leading-tight text-brand-darker sm:text-3xl">
               הטיפוחייה היא מודל עבור הורים שרוצים לקחת אחריות על חינוך ילדיהם בגיל הרך. זוהי דרך עבור קבוצת הורים לחבור יחדיו ולייצר מסגרת מותאמת התפתחותית וברת קיימא במקום האלטרנטיבות הקיימות - מעונות עמוסים, מטפלת פרטית יקרה או להישאר לבד בבית
             </div>
             <div className="mt-9 flex flex-wrap gap-3">

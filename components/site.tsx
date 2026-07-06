@@ -78,7 +78,7 @@ export function SectionHeader({ eyebrow, title, children, align = "center" }: { 
     <div className={cn("max-w-3xl", align === "center" ? "mx-auto text-center" : "text-right")}>
       {eyebrow ? <p className="text-sm font-bold tracking-[0.18em] text-leaf-dark">{eyebrow}</p> : null}
       <h2 className="mt-3 font-display text-4xl font-bold tracking-tight text-brand-darker sm:text-5xl">{title}</h2>
-      {children ? <div className="mt-5 text-lg leading-9 text-ink">{children}</div> : null}
+      {children ? <div className="mt-5 text-justify text-lg leading-9 text-ink">{children}</div> : null}
     </div>
   );
 }
@@ -94,7 +94,7 @@ export function ServiceCard({ service }: { service: { title: string; description
         <Leaf className="h-5 w-5" aria-hidden />
       </div>
       <h3 className="font-display text-2xl font-semibold text-brand-darker">{service.title}</h3>
-      <p className="mt-3 leading-7 text-ink">{service.description}</p>
+      <p className="mt-3 text-justify leading-7 text-ink">{service.description}</p>
       <dl className="mt-6 space-y-3 text-sm text-muted">
         <div>
           <dt className="font-semibold text-ink">למי זה מתאים</dt>
@@ -137,8 +137,8 @@ export function ProfileCard({
         )}
       </div>
       <h3 className="mt-6 font-display text-3xl font-semibold text-brand-darker">{provider.name}</h3>
-      <p className="mt-4 leading-7 text-leaf-dark">{provider.credentials}</p>
-      <p className="mt-4 leading-7 text-muted">{provider.story}</p>
+      <p className="mt-4 text-justify leading-7 text-leaf-dark">{provider.credentials}</p>
+      <p className="mt-4 text-justify leading-7 text-muted">{provider.story}</p>
     </Card>
   );
 }
