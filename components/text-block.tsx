@@ -116,6 +116,7 @@ function NumberedListContent({ content }: { content: NumberedListBlock }) {
 }
 
 export function TextBlock({
+  id,
   title,
   text,
   aboutLinks,
@@ -123,6 +124,7 @@ export function TextBlock({
   image,
   imageAlt,
 }: {
+  id?: string;
   title: string;
   text?: TextBlockBody;
   aboutLinks?: AboutLinkChip[];
@@ -146,7 +148,7 @@ export function TextBlock({
 
   if (image) {
     return (
-      <section className="mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:px-8">
+      <section id={id} className="mx-auto max-w-3xl scroll-mt-28 px-4 py-16 sm:px-6 lg:px-8">
         <SectionHeader title={title} align={align} />
         {body}
       </section>
@@ -154,7 +156,7 @@ export function TextBlock({
   }
 
   return (
-    <section className="mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:px-8">
+    <section id={id} className="mx-auto max-w-3xl scroll-mt-28 px-4 py-16 sm:px-6 lg:px-8">
       <SectionHeader title={title} align={align}>
         {body}
         {aboutLinks?.length ? <AboutLinkChips links={aboutLinks} /> : null}

@@ -16,7 +16,7 @@ export default async function HomePage({ searchParams }: { searchParams: Promise
 
       <TextBlock title={whatIsTipuchiyaSection.title} text={whatIsTipuchiyaSection.text} />
 
-      <section className="py-20">
+      <section id="team" className="scroll-mt-28 py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeader title={teamSection.title}>
             {teamSection.intro}
@@ -37,9 +37,14 @@ export default async function HomePage({ searchParams }: { searchParams: Promise
         text={homepageSections.block1.text}
         aboutLinks={homepageSections.block1.aboutLinks}
       />
-      <TextBlock title={homepageSections.block2.title} text={homepageSections.block2.text} align="start" />
+      <TextBlock
+        id="audience"
+        title={homepageSections.block2.title}
+        text={homepageSections.block2.text}
+        align="start"
+      />
 
-      <section id="contact" className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+      <section id="contact" className="mx-auto max-w-7xl scroll-mt-28 px-4 py-16 sm:px-6 lg:px-8">
         <div className="grid gap-12 lg:grid-cols-[0.75fr_1.25fr] lg:items-start">
           <div>
             <SectionHeader

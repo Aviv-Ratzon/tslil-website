@@ -15,19 +15,26 @@ export function ButtonLink({
   href,
   children,
   variant = "primary",
+  size = "default",
+  className,
 }: {
   href: string;
   children: React.ReactNode;
   variant?: "primary" | "secondary" | "ghost";
+  size?: "default" | "compact";
+  className?: string;
 }) {
   return (
     <Link
       href={href}
       className={cn(
-        "inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-semibold transition",
+        "inline-flex items-center justify-center rounded-full font-semibold transition whitespace-nowrap",
+        size === "default" && "px-5 py-3 text-sm",
+        size === "compact" && "px-3 py-2 text-xs sm:px-3.5 sm:py-2.5 sm:text-sm",
         variant === "primary" && "bg-brand-darker text-cream shadow-lg shadow-brand/30 hover:bg-brand-dark",
         variant === "secondary" && "border-2 border-brand bg-paper text-brand-darker hover:bg-brand-soft",
         variant === "ghost" && "text-ink hover:bg-cream-dark",
+        className,
       )}
     >
       {children}
@@ -57,7 +64,7 @@ export function Footer() {
         <div>
           <p className="font-semibold text-cream">הגישה שלנו</p>
           <p className="mt-3 leading-7 text-brand-light">
-            הדרכה מקצועית, חמה ומעשית — עם כבוד לקצב של כל משפחה ולפרטיות שלכם.
+            לעצב מציאות ביחד: ליווי בהתאם לצורך התפתחותי של ילדים והורים - עם כבוד לקצב של כל משפחה ולפרטיות שלכם.
           </p>
         </div>
         <div>
