@@ -1,8 +1,15 @@
-import { BookOpen, Heart, ShieldCheck } from "lucide-react";
+import { Boxes, Heart, Trees } from "lucide-react";
 import { ButtonLink } from "@/components/site";
 import { RichContentBody } from "@/components/rich-text";
 import { HeroImageRotator } from "@/components/hero-image-rotator";
 import { homepageSections } from "@/lib/content";
+import { cn } from "@/lib/utils";
+
+const heroHighlights = [
+  { label: "להיות נוכחים", icon: Trees },
+  { label: "להנות מהחיים עם הילדים", icon: Heart, accent: true },
+  { label: "מרחב קהילתי שבו תודעות נוגעות זו בזו", icon: Boxes },
+] as const;
 
 export function HeroSection() {
   return (
@@ -47,15 +54,19 @@ export function HeroSection() {
             <RichContentBody blocks={homepageSections.heroWhatIs.body} />
           </div>
           <div className="soft-divider my-8" />
-          <div className="grid gap-4 sm:grid-cols-3">
-            {[
-              ["להיות נוכחים", ShieldCheck],
-              ["מרחב קהילתי שבו תודעות נוגעות זו בזו", BookOpen],
-              ["להנות מהחיים עם הילדים", Heart],
-            ].map(([label, Icon]) => (
-              <div key={label as string} className="framed-box flex items-center gap-4 rounded-2xl bg-paper/90 p-4">
-                <Icon className="h-5 w-5 shrink-0 text-brand-dark" aria-hidden />
-                <span className="font-medium text-ink">{label as string}</span>
+          <div className="flex flex-wrap justify-center gap-4">
+            {heroHighlights.map(({ label, icon: Icon, accent }) => (
+              <div
+                key={label}
+                className={cn(
+                  "inline-flex w-fit max-w-full items-center gap-4 rounded-2xl p-4",
+                  accent
+                    ? "bg-brand-darker text-cream shadow-lg shadow-brand/30"
+                    : "framed-box bg-paper/90",
+                )}
+              >
+                <Icon className={cn("h-5 w-5 shrink-0", accent ? "text-cream" : "text-brand-dark")} aria-hidden />
+                <span className={cn("font-medium", accent ? "text-cream" : "text-ink")}>{label}</span>
               </div>
             ))}
           </div>
