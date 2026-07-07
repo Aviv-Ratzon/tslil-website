@@ -25,7 +25,10 @@ export function RichText({ segments }: { segments: ContentTextSegment[] }) {
               key={index}
               href={segment.href}
               {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-              className="font-semibold text-brand-darker underline decoration-brand/50 underline-offset-4 hover:text-brand"
+              className={cn(
+                "font-semibold text-brand-darker underline decoration-brand/50 underline-offset-4 hover:text-brand",
+                segment.small && "text-lg",
+              )}
             >
               {renderTextWithLineBreaks(segment.text, `link-${index}`)}
             </Link>

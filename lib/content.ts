@@ -1,4 +1,4 @@
-﻿export type ContentTextSegment = { text: string; bold?: boolean; href?: string };
+﻿export type ContentTextSegment = { text: string; bold?: boolean; href?: string; small?: boolean };
 
 /** One paragraph: plain string, or segments with optional bold emphasis or links. */
 export type RichParagraph = string | ContentTextSegment[];
