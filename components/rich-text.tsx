@@ -1,6 +1,18 @@
 import Link from "next/link";
+import { Fragment } from "react";
 import { cn } from "@/lib/utils";
 import type { ContentTextSegment, RichContentBlock, RichParagraph } from "@/lib/content";
+
+function renderTextWithLineBreaks(text: string, keyPrefix: string) {
+  const parts = text.split("\n");
+
+  return parts.map((part, partIndex) => (
+    <Fragment key={`${keyPrefix}-${partIndex}`}>
+      {partIndex > 0 ? <br /> : null}
+      {part}
+    </Fragment>
+  ));
+}
 
 export function RichText({ segments }: { segments: ContentTextSegment[] }) {
   return (
@@ -15,7 +27,7 @@ export function RichText({ segments }: { segments: ContentTextSegment[] }) {
               {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
               className="font-semibold text-brand-darker underline decoration-brand/50 underline-offset-4 hover:text-brand"
             >
-              {segment.text}
+              {renderTextWithLineBreaks(segment.text, `link-${index}`)}
             </Link>
           );
         }
@@ -23,12 +35,12 @@ export function RichText({ segments }: { segments: ContentTextSegment[] }) {
         if (segment.bold) {
           return (
             <strong key={index} className="font-bold">
-              {segment.text}
+              {renderTextWithLineBreaks(segment.text, `bold-${index}`)}
             </strong>
           );
         }
 
-        return <span key={index}>{segment.text}</span>;
+        return <span key={index}>{renderTextWithLineBreaks(segment.text, `text-${index}`)}</span>;
       })}
     </>
   );
