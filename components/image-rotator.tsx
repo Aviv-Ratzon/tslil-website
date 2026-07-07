@@ -9,10 +9,13 @@ export function ImageRotator({
   images,
   objectFit = "contain",
   sizes = "(max-width: 1024px) 100vw, 50vw",
+  aspectRatio,
 }: {
   images: CarouselImage[];
   objectFit?: "cover" | "contain";
   sizes?: string;
+  /** Width ÷ height. When set, the frame scales with width and keeps a fixed ratio on all screens. */
+  aspectRatio?: number;
 }) {
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -35,8 +38,8 @@ export function ImageRotator({
   return (
     <div className="paper-panel rounded-[3rem] p-3">
       <div
-        className="relative overflow-hidden rounded-[2.5rem] bg-cream-dark"
-        style={{ height: "28rem" }}
+        className="relative w-full overflow-hidden rounded-[2.5rem] bg-cream-dark"
+        style={aspectRatio ? { aspectRatio } : { height: "28rem" }}
       >
         <Image
           key={active.src}

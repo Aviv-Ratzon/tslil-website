@@ -49,9 +49,9 @@ export function HeroSection() {
           <div className="soft-divider my-8" />
           <div className="grid gap-4 sm:grid-cols-3">
             {[
-              ["מקום לפגוש ולהיפגש", ShieldCheck],
+              ["להיות נוכחים", ShieldCheck],
               ["מרחב קהילתי שבו תודעות נוגעות זו בזו", BookOpen],
-              ["איפה שאוכלים פאנקייקס סלק", Heart],
+              ["להנות מהחיים עם הילדים", Heart],
             ].map(([label, Icon]) => (
               <div key={label as string} className="framed-box flex items-center gap-4 rounded-2xl bg-paper/90 p-4">
                 <Icon className="h-5 w-5 shrink-0 text-brand-dark" aria-hidden />
